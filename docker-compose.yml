@@ -28,7 +28,7 @@ services:
 
   springapi:
     # image: openjdk:14-jdk-alpine
-    image: pos-be:v11
+    image: mirarifhasan/pos-be
     container_name: springapi
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/codenode_pos

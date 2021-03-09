@@ -1,0 +1,1264 @@
+-- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: codenode_pos
+-- ------------------------------------------------------
+-- Server version	8.0.23
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `address`
+--
+
+DROP TABLE IF EXISTS `address`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `address` (
+  `addressID` int NOT NULL AUTO_INCREMENT,
+  `house` varchar(30) DEFAULT 'N/A',
+  `road` varchar(30) DEFAULT 'N/A',
+  `block` varchar(30) DEFAULT 'N/A',
+  `sector` varchar(30) DEFAULT 'N/A',
+  `police_station` varchar(30) DEFAULT 'N/A',
+  `post_office_id` int NOT NULL,
+  `district` varchar(30) NOT NULL DEFAULT 'N/A',
+  `country` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`addressID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `address`
+--
+
+LOCK TABLES `address` WRITE;
+/*!40000 ALTER TABLE `address` DISABLE KEYS */;
+INSERT INTO `address` VALUES (1,'121','2/A','N/A','Uttar','Badda',4,'Dhaka','Bangladesh'),(2,'12','7','C','N/A','Khilgaon',2,'Dhaka','Bangladesh'),(3,'56','1','N/A','N/A','Shabujbag',1,'Dhaka','Bangladesh');
+/*!40000 ALTER TABLE `address` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bank`
+--
+
+DROP TABLE IF EXISTS `bank`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bank` (
+  `bank_id` int NOT NULL AUTO_INCREMENT,
+  `bank_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`bank_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bank`
+--
+
+LOCK TABLES `bank` WRITE;
+/*!40000 ALTER TABLE `bank` DISABLE KEYS */;
+INSERT INTO `bank` VALUES (1,'AB Bank Limited'),(2,'Agrani Bank Limited'),(3,'Al-Arafah Islami Bank Limited'),(4,'Ansar VDP Unnayan Bank'),(5,'Bangladesh Commerce Bank Limited'),(6,'Bangladesh Development Bank'),(7,'Bangladesh Krishi Bank'),(8,'Bank Al-Falah Limited (Pakistan)'),(9,'Bank Asia Limited'),(10,'BASIC Bank Limited'),(11,'Bengal Commercial Bank Ltd'),(12,'BRAC Bank Limited'),(13,'Citibank N.A (United States of America)'),(14,'Citizens Bank Limited'),(15,'City Bank Limited'),(16,'Commercial Bank of Ceylon PLC (Sri Lanka)'),(17,'Community Bank Bangladesh Limited'),(18,'Dhaka Bank Limited'),(19,'Dutch-Bangla Bank Limited'),(20,'Eastern Bank Limited'),(21,'EXIM Bank Limited'),(22,'First Security Islami Bank Limited'),(23,'Global Islamic Bank Ltd (former NRB Global Bank)'),(24,'Grameen Bank'),(25,'Habib Bank Limited (Pakistan)'),(26,'HSBC (Hong Kong)'),(27,'ICB Islamic Bank Limited'),(28,'IFIC Bank Limited'),(29,'Islami Bank Bangladesh Limited'),(30,'Jamuna Bank Limited'),(31,'Janata Bank Limited'),(32,'Jubilee Bank'),(33,'Karmashangosthan Bank'),(34,'Meghna Bank Limited'),(35,'Mercantile Bank Limited'),(36,'Midland Bank Limited'),(37,'Modhumoti Bank Limited'),(38,'Mutual Trust Bank Limited'),(39,'National Bank Limited'),(40,'National Bank of Pakistan (Pakistan)'),(41,'National Credit & Commerce Bank Limited'),(42,'NRB Bank Limited'),(43,'NRB Commercial Bank Ltd'),(44,'One Bank Limited'),(45,'Padma Bank Limited'),(46,'Palli Sanchay Bank'),(47,'Premier Bank Limited'),(48,'Prime Bank Limited'),(49,'Probashi Kollyan Bank'),(50,'Pubali Bank Limited'),(51,'Rajshahi Krishi Unnayan Bank'),(52,'Rupali Bank Limited'),(53,'Shahjalal Islami Bank Limited'),(54,'Shimanto Bank Ltd'),(55,'Social Islami Bank Limited'),(56,'Sonali Bank Limited'),(57,'South Bangla Agriculture and Commerce Bank Limited'),(58,'Southeast Bank Limited'),(59,'Standard Bank Limited'),(60,'Standard Chartered Bank (United Kingdom)'),(61,'State Bank of India (India)'),(62,'Trust Bank Limited'),(63,'Union Bank Ltd'),(64,'United Commercial Bank Ltd'),(65,'Uttara Bank Limited'),(66,'Woori Bank (South Korea)');
+/*!40000 ALTER TABLE `bank` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `branch`
+--
+
+DROP TABLE IF EXISTS `branch`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `branch` (
+  `branchID` int NOT NULL AUTO_INCREMENT,
+  `branch_name` varchar(20) NOT NULL,
+  `addressID` int NOT NULL,
+  PRIMARY KEY (`branchID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `branch`
+--
+
+LOCK TABLES `branch` WRITE;
+/*!40000 ALTER TABLE `branch` DISABLE KEYS */;
+INSERT INTO `branch` VALUES (2,'Badda',1),(4,'Bashabo',3),(10,'Khilgaon',2);
+/*!40000 ALTER TABLE `branch` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cart` (
+  `cart_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL DEFAULT '0',
+  `order_id` int NOT NULL DEFAULT '0',
+  `product_id` int NOT NULL,
+  `quantity` float NOT NULL,
+  `unit_price` float NOT NULL DEFAULT '0',
+  `cart_status_id` int NOT NULL DEFAULT '0',
+  `promotional_off` float DEFAULT NULL,
+  PRIMARY KEY (`cart_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart`
+--
+
+LOCK TABLES `cart` WRITE;
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cartstatus`
+--
+
+DROP TABLE IF EXISTS `cartstatus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cartstatus` (
+  `cart_status_id` int NOT NULL AUTO_INCREMENT,
+  `cart_status_name` varchar(20) NOT NULL,
+  PRIMARY KEY (`cart_status_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cartstatus`
+--
+
+LOCK TABLES `cartstatus` WRITE;
+/*!40000 ALTER TABLE `cartstatus` DISABLE KEYS */;
+INSERT INTO `cartstatus` VALUES (1,'Placed'),(2,'Processing'),(3,'Ready'),(4,'Served');
+/*!40000 ALTER TABLE `cartstatus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cash_log`
+--
+
+DROP TABLE IF EXISTS `cash_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cash_log` (
+  `cash_log_id` int NOT NULL AUTO_INCREMENT,
+  `branch_id` int NOT NULL,
+  `debit_credit` int NOT NULL,
+  `amount` float NOT NULL,
+  `remarks` text NOT NULL,
+  `date_time` varchar(22) NOT NULL,
+  PRIMARY KEY (`cash_log_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cash_log`
+--
+
+LOCK TABLES `cash_log` WRITE;
+/*!40000 ALTER TABLE `cash_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cash_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `category` (
+  `categoryID` int NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(20) NOT NULL,
+  `parentID` int NOT NULL,
+  `priority` int NOT NULL,
+  `visibility` int NOT NULL,
+  `description` text,
+  `image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`categoryID`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `category`
+--
+
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `department`
+--
+
+DROP TABLE IF EXISTS `department`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `department` (
+  `departmentID` int NOT NULL AUTO_INCREMENT,
+  `department_name` varchar(20) NOT NULL,
+  PRIMARY KEY (`departmentID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `department`
+--
+
+LOCK TABLES `department` WRITE;
+/*!40000 ALTER TABLE `department` DISABLE KEYS */;
+INSERT INTO `department` VALUES (1,'Engineering'),(2,'Operations'),(4,'Sales');
+/*!40000 ALTER TABLE `department` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `employee`
+--
+
+DROP TABLE IF EXISTS `employee`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `employee` (
+  `employeeID` int NOT NULL AUTO_INCREMENT,
+  `userID` int NOT NULL,
+  `branchID` int DEFAULT '0',
+  `departmentID` int DEFAULT NULL,
+  `rankID` int DEFAULT NULL,
+  `joining_date` varchar(10) DEFAULT NULL,
+  `employee_status_id` int DEFAULT NULL,
+  `termination_date` varchar(10) DEFAULT NULL,
+  `termination_reason` text,
+  `rule_group_id` int DEFAULT NULL,
+  `salary` int DEFAULT NULL,
+  `salary_type_id` int DEFAULT NULL,
+  `father_name` varchar(30) DEFAULT NULL,
+  `mother_name` varchar(30) DEFAULT NULL,
+  `blood_group` varchar(3) DEFAULT NULL,
+  `birth_date` varchar(10) DEFAULT NULL,
+  `marital_status` varchar(1) DEFAULT NULL,
+  `gender` varchar(6) DEFAULT NULL,
+  `emergency_phone` varchar(15) DEFAULT NULL,
+  `emergency_person_name` varchar(30) DEFAULT NULL,
+  `emergency_person_relation` varchar(10) DEFAULT NULL,
+  `nid` varchar(20) DEFAULT NULL,
+  `passport` varchar(10) DEFAULT NULL,
+  `tin` varchar(20) DEFAULT NULL,
+  `bank_id` int DEFAULT '0',
+  `bank_account_no` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`employeeID`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `employee`
+--
+
+LOCK TABLES `employee` WRITE;
+/*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+INSERT INTO `employee` VALUES (14,1,2,1,3,NULL,0,NULL,NULL,1,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL);
+/*!40000 ALTER TABLE `employee` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `empstatus`
+--
+
+DROP TABLE IF EXISTS `empstatus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `empstatus` (
+  `employee_status_id` int NOT NULL AUTO_INCREMENT,
+  `employee_status` varchar(25) NOT NULL,
+  PRIMARY KEY (`employee_status_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `empstatus`
+--
+
+LOCK TABLES `empstatus` WRITE;
+/*!40000 ALTER TABLE `empstatus` DISABLE KEYS */;
+INSERT INTO `empstatus` VALUES (1,'Full Time'),(2,'Part Time');
+/*!40000 ALTER TABLE `empstatus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `emptype`
+--
+
+DROP TABLE IF EXISTS `emptype`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `emptype` (
+  `emp_type_id` int NOT NULL AUTO_INCREMENT,
+  `emp_type` varchar(20) NOT NULL,
+  PRIMARY KEY (`emp_type_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `emptype`
+--
+
+LOCK TABLES `emptype` WRITE;
+/*!40000 ALTER TABLE `emptype` DISABLE KEYS */;
+INSERT INTO `emptype` VALUES (1,'In House'),(2,'Contractual'),(3,'Intern');
+/*!40000 ALTER TABLE `emptype` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job`
+--
+
+DROP TABLE IF EXISTS `job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `job` (
+  `job_id` int NOT NULL AUTO_INCREMENT,
+  `job_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`job_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job`
+--
+
+LOCK TABLES `job` WRITE;
+/*!40000 ALTER TABLE `job` DISABLE KEYS */;
+INSERT INTO `job` VALUES (1,'AC Repair'),(2,'Door Fixing'),(4,'Oil Tank Replace');
+/*!40000 ALTER TABLE `job` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_cart_transportation`
+--
+
+DROP TABLE IF EXISTS `job_cart_transportation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `job_cart_transportation` (
+  `job_cart_transportation_id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `reg_no` varchar(30) NOT NULL,
+  `vin` varchar(30) NOT NULL,
+  `chesis` varchar(30) NOT NULL,
+  `model` varchar(30) NOT NULL,
+  `brand` varchar(30) NOT NULL,
+  `color` varchar(30) NOT NULL,
+  `cc` int NOT NULL,
+  `received_date_time` varchar(20) NOT NULL,
+  `mileage` int NOT NULL,
+  `engine_no` varchar(30) NOT NULL,
+  `car_no` varchar(30) NOT NULL,
+  `last_service_date` varchar(10) NOT NULL,
+  `registration_date` varchar(10) NOT NULL,
+  `expected_delivery_date_time` varchar(20) NOT NULL,
+  PRIMARY KEY (`job_cart_transportation_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_cart_transportation`
+--
+
+LOCK TABLES `job_cart_transportation` WRITE;
+/*!40000 ALTER TABLE `job_cart_transportation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `job_cart_transportation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_checklist`
+--
+
+DROP TABLE IF EXISTS `job_checklist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `job_checklist` (
+  `job_checklist_id` int NOT NULL AUTO_INCREMENT,
+  `job_checklist_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`job_checklist_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_checklist`
+--
+
+LOCK TABLES `job_checklist` WRITE;
+/*!40000 ALTER TABLE `job_checklist` DISABLE KEYS */;
+INSERT INTO `job_checklist` VALUES (1,'Battery'),(2,'Door'),(3,'Window'),(12,'AC');
+/*!40000 ALTER TABLE `job_checklist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_checklist_order`
+--
+
+DROP TABLE IF EXISTS `job_checklist_order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `job_checklist_order` (
+  `job_checklist_order_id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `data` text NOT NULL,
+  PRIMARY KEY (`job_checklist_order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_checklist_order`
+--
+
+LOCK TABLES `job_checklist_order` WRITE;
+/*!40000 ALTER TABLE `job_checklist_order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `job_checklist_order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_order`
+--
+
+DROP TABLE IF EXISTS `job_order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `job_order` (
+  `job_order_id` int NOT NULL AUTO_INCREMENT,
+  `job_ids` text NOT NULL,
+  `order_id` int NOT NULL,
+  PRIMARY KEY (`job_order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_order`
+--
+
+LOCK TABLES `job_order` WRITE;
+/*!40000 ALTER TABLE `job_order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `job_order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `licence`
+--
+
+DROP TABLE IF EXISTS `licence`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `licence` (
+  `licence_id` int NOT NULL AUTO_INCREMENT,
+  `licence_code` varchar(16) NOT NULL,
+  `licence_time` int NOT NULL,
+  `used` int NOT NULL DEFAULT '0',
+  `remarks` varchar(10) NOT NULL,
+  PRIMARY KEY (`licence_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `licence`
+--
+
+LOCK TABLES `licence` WRITE;
+/*!40000 ALTER TABLE `licence` DISABLE KEYS */;
+INSERT INTO `licence` VALUES (1,'C62F407719C1FEAC',7889400,0,'3 Month'),(2,'2711CA74B1230A1A',7889400,0,'3 Month'),(3,'8B264421876CFABB',7889400,0,'3 Month'),(4,'8FE055F6FCE1A504',7889400,0,'3 Month'),(5,'A1B18B2E1FA8DECC',7889400,0,'3 Month'),(6,'F7D98F83DA5E0355',7889400,0,'3 Month'),(7,'B18218797F15DE6D',7889400,0,'3 Month'),(8,'E271947F8FD08062',7889400,0,'3 Month'),(9,'1B4D34085CE72D9E',7889400,0,'3 Month'),(10,'ABCB98ED4DA67B94',7889400,0,'3 Month'),(11,'659DBEE84D234910',7889400,0,'3 Month'),(12,'F9DFED154EDC2C98',7889400,0,'3 Month'),(13,'134C313401E5D3D7',7889400,0,'3 Month'),(14,'86535401711D772F',7889400,0,'3 Month'),(15,'FDBDEF5B6CE08DCA',7889400,0,'3 Month'),(16,'A659541F71FAC751',7889400,0,'3 Month'),(17,'F824799BEED91FD4',7889400,0,'3 Month'),(18,'C84339B88AF69D81',7889400,0,'3 Month'),(19,'90D3291FB314A545',7889400,0,'3 Month'),(20,'E7912DA885032A41',7889400,0,'3 Month'),(21,'59547ED3C8105968',7889400,0,'3 Month'),(22,'0B2EC215D0B46ADB',7889400,0,'3 Month'),(23,'AA2F5F553827A34B',7889400,0,'3 Month'),(24,'B2CB5F4A61DE8786',7889400,0,'3 Month'),(25,'CEBC26E1809A5606',7889400,0,'3 Month'),(26,'243533F510133E5C',7889400,0,'3 Month'),(27,'0C0BE90AF16966EF',7889400,0,'3 Month'),(28,'737BFB13D1F48C49',7889400,0,'3 Month'),(29,'39C60654EBA45A31',7889400,0,'3 Month'),(30,'3D20DD6B7DECEDCF',7889400,0,'3 Month'),(31,'D81818438EF4E5D5',7889400,0,'3 Month'),(32,'95E56AF403A6DE96',7889400,0,'3 Month'),(33,'3A5B58D2C598D28E',7889400,0,'3 Month'),(34,'7682879DFAF36732',7889400,0,'3 Month'),(35,'30EA3B1F356BFB54',7889400,0,'3 Month'),(36,'1F6B5DF5F5594431',7889400,0,'3 Month'),(37,'BCAFB8FB3011C804',7889400,0,'3 Month'),(38,'F25099923D313008',7889400,0,'3 Month'),(39,'D45FDA71D461FB28',7889400,0,'3 Month'),(40,'E8428ED14ABDEF94',7889400,0,'3 Month'),(41,'9F19BB7FC599B759',7889400,0,'3 Month'),(42,'212C5B0F08AEE92B',7889400,0,'3 Month'),(43,'A462DFA5EF042910',7889400,0,'3 Month'),(44,'D743F5D5B8FB8753',7889400,0,'3 Month'),(45,'B4880EA123B20CA8',7889400,0,'3 Month'),(46,'66217A4EA01F3F35',7889400,0,'3 Month'),(47,'F8A4B6784FDCB9E4',7889400,0,'3 Month'),(48,'11B8E95577F8E399',7889400,0,'3 Month'),(49,'D54EA8F2E88B2383',7889400,0,'3 Month'),(50,'1BDA638C7FFEAECF',7889400,0,'3 Month'),(51,'FFB081077E48473C',7889400,0,'3 Month'),(52,'40E9455E19C62B82',7889400,0,'3 Month'),(53,'2E276EA8B8A93F20',7889400,0,'3 Month'),(54,'DB16BC75BC38E072',7889400,0,'3 Month'),(55,'373043DB830A73B3',7889400,0,'3 Month'),(56,'B5DAB2BC0ADD8920',7889400,0,'3 Month'),(57,'4AF294ED3C03091A',7889400,0,'3 Month'),(58,'66344BAE58F77072',7889400,0,'3 Month'),(59,'5B495CFECEAC68DD',7889400,0,'3 Month'),(60,'EEF2E4554031ED4F',7889400,0,'3 Month'),(61,'07503C2FB511DD3E',7889400,0,'3 Month'),(62,'082E28997414E1A3',7889400,0,'3 Month'),(63,'351D59C421D37941',7889400,0,'3 Month'),(64,'B3B8FADCD1F1FD6B',7889400,0,'3 Month'),(65,'82B3AC89F7FB0061',7889400,0,'3 Month'),(66,'A5F8F20BB3E0D949',7889400,0,'3 Month'),(67,'B39A908B99CF67D2',7889400,0,'3 Month'),(68,'F745AADD5619580E',7889400,0,'3 Month'),(69,'B07AA78726C07AFB',7889400,0,'3 Month'),(70,'7A9B35CA9ED294D9',7889400,0,'3 Month'),(71,'2D541332729C9F4F',7889400,0,'3 Month'),(72,'DA7D38FB05280D53',7889400,0,'3 Month'),(73,'65021003164DD064',7889400,0,'3 Month'),(74,'08EFE277F92F8DC1',7889400,0,'3 Month'),(75,'88B9BCD8A2AC2A80',7889400,0,'3 Month'),(76,'7BADC5196D96DA1A',7889400,0,'3 Month'),(77,'91FA5E11A1FD90EF',7889400,0,'3 Month'),(78,'668C959023106B42',7889400,0,'3 Month'),(79,'BBE4B48F17550BA5',7889400,0,'3 Month'),(80,'221F9E3887B17291',7889400,0,'3 Month'),(81,'B7F612541E018746',7889400,0,'3 Month'),(82,'F828980B5DDF22CA',7889400,0,'3 Month'),(83,'A1BA4A063EEC7133',7889400,0,'3 Month'),(84,'EAC5301536947E53',7889400,0,'3 Month'),(85,'C4995D29BF25C3C4',7889400,0,'3 Month'),(86,'8E44D1585D1D794A',7889400,0,'3 Month'),(87,'10711BC1190AF6BD',7889400,0,'3 Month'),(88,'A3C74746116F6630',7889400,0,'3 Month'),(89,'76AAD08BC88E690A',7889400,0,'3 Month'),(90,'2FFA97BCEE7EB51D',7889400,0,'3 Month'),(91,'11D9B4D6C51F3425',7889400,0,'3 Month'),(92,'6EE0A4DA4FAEA894',7889400,0,'3 Month'),(93,'9E28C546A3C86DD8',7889400,0,'3 Month'),(94,'4F704B090DEB933F',7889400,0,'3 Month'),(95,'A6FC9F5A7FEF044E',7889400,0,'3 Month'),(96,'11437669091B6355',7889400,0,'3 Month'),(97,'0F3FEF6C7D8C6D6B',7889400,0,'3 Month'),(98,'9D6E09CB23A3E3DB',7889400,0,'3 Month'),(99,'F44FAA80A633C128',7889400,0,'3 Month'),(100,'24D65D87F775B61A',7889400,0,'3 Month'),(101,'B9E4976C2291E587',7889400,0,'3 Month'),(102,'B9395711A3982865',7889400,0,'3 Month'),(103,'3634B8A56E2511D8',7889400,0,'3 Month'),(104,'4EFE6ED7870A0D13',7889400,0,'3 Month'),(105,'65F173AB2F8A9DD8',7889400,0,'3 Month'),(106,'770248D1201906DE',7889400,0,'3 Month'),(107,'380BD659C9B23C22',7889400,0,'3 Month'),(108,'18929D1A8FC5CD36',7889400,0,'3 Month'),(109,'1AD25023F2D162FF',7889400,0,'3 Month'),(110,'CC59D3DF1E95AC43',7889400,0,'3 Month'),(111,'168E7990A6A8C5FD',7889400,0,'3 Month'),(112,'D1DBCE48952D4636',7889400,0,'3 Month'),(113,'7850F7BFBE6E183E',7889400,0,'3 Month'),(114,'B82C17016DE604A2',7889400,0,'3 Month'),(115,'FDF045D8A90A5D40',7889400,0,'3 Month'),(116,'00010DEDCB464CEA',7889400,0,'3 Month'),(117,'C7CB2F3401A669A6',7889400,0,'3 Month'),(118,'3C3A959ED1EFB1CB',7889400,0,'3 Month'),(119,'D9768B800572AD37',7889400,0,'3 Month'),(120,'13C46E15EFFC8D2A',7889400,0,'3 Month'),(121,'0195F5E7C364FB96',7889400,0,'3 Month'),(122,'86210EEEB0C73F7B',7889400,0,'3 Month'),(123,'1989FCFB03AFB050',7889400,0,'3 Month'),(124,'8DC2D88EB9FC2B83',7889400,0,'3 Month'),(125,'C7308868B62E6EFF',7889400,0,'3 Month'),(126,'75FA0F09B6E7648D',7889400,0,'3 Month'),(127,'5A24792A76F4474E',7889400,0,'3 Month'),(128,'E40633DC3B826EBA',7889400,0,'3 Month'),(129,'75F115587BB48F37',7889400,0,'3 Month'),(130,'9CC05D6431051640',7889400,0,'3 Month'),(131,'112860639D41B2BF',7889400,0,'3 Month'),(132,'DF0C29C1240EE068',7889400,0,'3 Month'),(133,'E42CC3A4187F6DF8',7889400,0,'3 Month'),(134,'F91DD70A503609F1',7889400,0,'3 Month'),(135,'0929705596D16CE4',7889400,0,'3 Month'),(136,'9C5A1872B07E02BD',7889400,0,'3 Month'),(137,'9FAC3D75A40A4760',7889400,0,'3 Month'),(138,'7598390F66B6BD8A',7889400,0,'3 Month'),(139,'A2B8F724B4E6ED36',7889400,0,'3 Month'),(140,'2C67E5F645E5CB30',7889400,0,'3 Month'),(141,'CD4D4F70F40C96BC',7889400,0,'3 Month'),(142,'BBF8F9D577727054',7889400,0,'3 Month'),(143,'72DFC8C152A09997',7889400,0,'3 Month'),(144,'005495EE39A3D816',7889400,0,'3 Month'),(145,'4B2C5477A554C88C',7889400,0,'3 Month'),(146,'C6D0A7388BAD914A',7889400,0,'3 Month'),(147,'8069E15EB98219B5',7889400,0,'3 Month'),(148,'B9705C1C63E02898',7889400,0,'3 Month'),(149,'C89FADA6FC450023',7889400,0,'3 Month'),(150,'8B9C4850750B8578',7889400,0,'3 Month'),(151,'E88617C4E86F4DF0',7889400,0,'3 Month'),(152,'518935E9853BFDC1',7889400,0,'3 Month'),(153,'77D9E63C43D8538F',7889400,0,'3 Month'),(154,'928BBE026808D2DA',7889400,0,'3 Month'),(155,'F991591B26E21736',7889400,0,'3 Month'),(156,'A22204F81CCFB3B8',7889400,0,'3 Month'),(157,'EF5249D79A977610',7889400,0,'3 Month'),(158,'31C98FBDE16F7CF5',7889400,0,'3 Month'),(159,'15D0C6AB3032C34E',7889400,0,'3 Month'),(160,'85B7B55808C55F5D',7889400,0,'3 Month'),(161,'E052E64C49A406FF',7889400,0,'3 Month'),(162,'49E6D29F4567F00C',7889400,0,'3 Month'),(163,'F534FEDB6FAF7FD7',7889400,0,'3 Month'),(164,'344AD7A9666937D0',7889400,0,'3 Month'),(165,'F8D27C791789FC0B',7889400,0,'3 Month'),(166,'3DF46419A826AFEB',7889400,0,'3 Month'),(167,'B46E0733973F4665',7889400,0,'3 Month'),(168,'DBC1BD0F495850F6',7889400,0,'3 Month'),(169,'541093BD47BD66F1',7889400,0,'3 Month'),(170,'100974AE0FD97756',7889400,0,'3 Month'),(171,'90EE52C2E60A78DA',7889400,0,'3 Month'),(172,'1897A80807AD3933',7889400,0,'3 Month'),(173,'5027376C02C4F974',7889400,0,'3 Month'),(174,'04DC1E0BEDDA9135',7889400,0,'3 Month'),(175,'94E1D46425C1D17D',7889400,0,'3 Month'),(176,'23F9750D9967BE43',7889400,0,'3 Month'),(177,'044016D8158B2477',7889400,0,'3 Month'),(178,'D1AA09ADA4E0AF9B',7889400,0,'3 Month'),(179,'7F46FB598A19BEBE',7889400,0,'3 Month'),(180,'0E8BCEF03212B7C6',7889400,0,'3 Month'),(181,'6061E3D41DA37D03',7889400,0,'3 Month'),(182,'35392A5BB7B8F4D1',7889400,0,'3 Month'),(183,'2FCE71C83885073E',7889400,0,'3 Month'),(184,'A282307187F24A49',7889400,0,'3 Month'),(185,'C9C24938DFCB3C9F',7889400,0,'3 Month'),(186,'000E162B13F67A4C',7889400,0,'3 Month'),(187,'20D2592DB1C3EBE2',7889400,0,'3 Month'),(188,'69A09370C96DD84C',7889400,0,'3 Month'),(189,'09D18B2E35CA0841',7889400,0,'3 Month'),(190,'6490B4817680BFFD',7889400,0,'3 Month'),(191,'9EE20D27C4B6BA6F',7889400,0,'3 Month'),(192,'DE9657AB3BC3EB34',7889400,0,'3 Month'),(193,'6DAC8191D6EFFBD0',7889400,0,'3 Month'),(194,'A08C65A2CD6C94F9',7889400,0,'3 Month'),(195,'D716FF1A145452CC',7889400,0,'3 Month'),(196,'29A15095F8B0E91C',7889400,0,'3 Month'),(197,'69AF6FD95E416515',7889400,0,'3 Month'),(198,'387C7CB59E3F209B',7889400,0,'3 Month'),(199,'0B8A0E225339A6F5',7889400,0,'3 Month'),(200,'F4544B64B152B3DB',7889400,0,'3 Month'),(201,'C726FA990D07CFAE',7889400,0,'3 Month'),(202,'6690F00A3D8D2C14',7889400,0,'3 Month'),(203,'5DF3F9C98FE8CD9A',7889400,0,'3 Month'),(204,'4D229E3746C7EB6F',7889400,0,'3 Month'),(205,'FA0CAB1A023EA090',7889400,0,'3 Month'),(206,'30B3FB4A34AB31A2',7889400,0,'3 Month'),(207,'5648F2495A38A07A',7889400,0,'3 Month'),(208,'89C034F88F3D7423',7889400,0,'3 Month'),(209,'1146CC61FDAB9CE3',7889400,0,'3 Month'),(210,'43A8D2C2C9DBD9E5',7889400,0,'3 Month'),(211,'9CFB7F6DEE6DADC8',7889400,0,'3 Month'),(212,'59AAE51FC338DBE5',7889400,0,'3 Month'),(213,'B3BC1BC0403C5DC2',7889400,0,'3 Month'),(214,'7FD53A3B60E20C2C',7889400,0,'3 Month'),(215,'7B675906A66BDA9D',7889400,0,'3 Month'),(216,'58D22D13BBBAC214',7889400,0,'3 Month'),(217,'A7E29EB94D97BC0F',7889400,0,'3 Month'),(218,'29226B1A77460453',7889400,0,'3 Month'),(219,'E6108A5D3456E048',7889400,0,'3 Month'),(220,'1FEED4FB01C7E718',7889400,0,'3 Month'),(221,'0E8B23B43BB6809D',7889400,0,'3 Month'),(222,'8073C59F38F95A08',7889400,0,'3 Month'),(223,'98891DFC526C355A',7889400,0,'3 Month'),(224,'400F5907A6CFA6F7',7889400,0,'3 Month'),(225,'58DAB74B9FA9F471',7889400,0,'3 Month'),(226,'DDD4652DF2824434',7889400,0,'3 Month'),(227,'7AB8F3C9CC303C22',7889400,0,'3 Month'),(228,'C7F329E3EF372484',7889400,0,'3 Month'),(229,'4E041DFDE7039CFF',7889400,0,'3 Month'),(230,'DDF32BA4C6BB771B',7889400,0,'3 Month'),(231,'E4AA7730A704ACD1',7889400,0,'3 Month'),(232,'9F2E02456C53E607',7889400,0,'3 Month'),(233,'3902E103F3AA1AD3',7889400,0,'3 Month'),(234,'A866FE18160D7B15',7889400,0,'3 Month'),(235,'509EBBC0D8C4EA4E',7889400,0,'3 Month'),(236,'05D44E3746F76D0C',7889400,0,'3 Month'),(237,'6533782133A998DF',7889400,0,'3 Month'),(238,'4DFDEDE584E2A050',7889400,0,'3 Month'),(239,'B1EC54FF07341BA0',7889400,0,'3 Month'),(240,'C9BA419A47FA66F8',7889400,0,'3 Month'),(241,'08DD5B71E8B5BC09',7889400,0,'3 Month'),(242,'499018D950123FE3',7889400,0,'3 Month'),(243,'53806950ADA326AF',7889400,0,'3 Month'),(244,'5742B414F8A4B54B',7889400,0,'3 Month'),(245,'22FC1A154CD5C5E7',7889400,0,'3 Month'),(246,'ED1F32961FB90F5F',7889400,0,'3 Month'),(247,'8B59196E75E0DD51',7889400,0,'3 Month'),(248,'3F9006E807110112',7889400,0,'3 Month'),(249,'68944AD1E123B7C1',7889400,0,'3 Month'),(250,'6015F3AF31B64B1F',7889400,0,'3 Month'),(251,'3933889D1C968003',7889400,0,'3 Month'),(252,'5A43D1D2AC8AC90F',7889400,0,'3 Month'),(253,'AAEDC37703682C7C',7889400,0,'3 Month'),(254,'51B14FACA485A5ED',7889400,0,'3 Month'),(255,'550338E35DCFD128',7889400,0,'3 Month'),(256,'9C9C39C062AE81F0',7889400,0,'3 Month'),(257,'D956E1CBE185ECDB',7889400,0,'3 Month'),(258,'94C8F5398886EAC1',7889400,0,'3 Month'),(259,'FE81F90939E3BC93',7889400,0,'3 Month'),(260,'C2F7B03CBA5A7FBA',7889400,0,'3 Month'),(261,'E5F59B7E01021726',7889400,0,'3 Month'),(262,'70EEB61F5C00C052',7889400,0,'3 Month'),(263,'7F1D37E99ED9DF04',7889400,0,'3 Month'),(264,'3B7B4949346A31A8',7889400,0,'3 Month'),(265,'890B2DB42C8AFE51',7889400,0,'3 Month'),(266,'7FF973C240B6D773',7889400,0,'3 Month'),(267,'F683F2963DE60E88',7889400,0,'3 Month'),(268,'1C2B324750EE91B1',7889400,0,'3 Month'),(269,'23FF4C5B33675244',7889400,0,'3 Month'),(270,'7367D67270B089B6',7889400,0,'3 Month'),(271,'57B3EFBBB734B478',7889400,0,'3 Month'),(272,'4CF7C5DCF244966D',7889400,0,'3 Month'),(273,'705B2EF8BF2621F1',7889400,0,'3 Month'),(274,'17B797DFC3E553AE',7889400,0,'3 Month'),(275,'64057B2C40C993FA',7889400,0,'3 Month'),(276,'909CCB0A8E6B88B3',7889400,0,'3 Month'),(277,'BE5810E1646F45EF',7889400,0,'3 Month'),(278,'657F26830B26A510',7889400,0,'3 Month'),(279,'48284CA3CCD2DCDC',7889400,0,'3 Month'),(280,'89A87B270A252352',7889400,0,'3 Month'),(281,'C4707183C35B59AD',7889400,0,'3 Month'),(282,'3B689184766F6C83',7889400,0,'3 Month'),(283,'627705C2F61E4D84',7889400,0,'3 Month'),(284,'0EDEF9E425C14C47',7889400,0,'3 Month'),(285,'9BFCE84C55D0D4F4',7889400,0,'3 Month'),(286,'E4C4823A176B35F5',7889400,0,'3 Month'),(287,'A1EBCC3BF9A21E00',7889400,0,'3 Month'),(288,'E96515D345614E16',7889400,0,'3 Month'),(289,'9B526F36A37462A6',7889400,0,'3 Month'),(290,'24C41F0A647B7F20',7889400,0,'3 Month'),(291,'6E8FE03B8E247705',7889400,0,'3 Month'),(292,'56AA9E0ABCA48649',7889400,0,'3 Month'),(293,'661CEF9A723FD02E',7889400,0,'3 Month'),(294,'D71123ECC820A170',7889400,0,'3 Month'),(295,'6111239980B60F51',7889400,0,'3 Month'),(296,'2A1752A2E5DD844D',7889400,0,'3 Month'),(297,'269124E6A122FB85',7889400,0,'3 Month'),(298,'D7B9D01B5CF8CB53',7889400,0,'3 Month'),(299,'F4A96EE938CBCA4D',7889400,0,'3 Month'),(300,'7F409AF326C27297',7889400,0,'3 Month'),(301,'873FB207172C7586',7889400,0,'3 Month'),(302,'D769EB703B466F3E',7889400,0,'3 Month'),(303,'5A4915305DA2EF47',7889400,0,'3 Month'),(304,'5C2DA629F01020B6',7889400,0,'3 Month'),(305,'BD7E3F70FD17394E',7889400,0,'3 Month'),(306,'B1F869D0F0125AEE',7889400,0,'3 Month'),(307,'4F5DBE198A419E41',7889400,0,'3 Month'),(308,'20261ADEEF52F920',7889400,0,'3 Month'),(309,'871CCD60118B500A',7889400,0,'3 Month'),(310,'2B5991A3B3CD6B1E',7889400,0,'3 Month'),(311,'E8D02EEADF07C85D',7889400,0,'3 Month'),(312,'2FDFB7450B489A8E',7889400,0,'3 Month'),(313,'0C893F9ED65FBC87',7889400,0,'3 Month'),(314,'4B97E526F38A6AA3',7889400,0,'3 Month'),(315,'90D21A40F3B55FA2',7889400,0,'3 Month'),(316,'CCDD603A0BFE2FB9',7889400,0,'3 Month'),(317,'66C62064624F2412',7889400,0,'3 Month'),(318,'28FE51678A257F74',7889400,0,'3 Month'),(319,'F538651C77DA1F90',7889400,0,'3 Month'),(320,'6ABADD0C181D0601',7889400,0,'3 Month'),(321,'2950D63DDA304B47',7889400,0,'3 Month'),(322,'42A1F6A42656C55C',7889400,0,'3 Month'),(323,'1047BEB337056DE2',7889400,0,'3 Month'),(324,'2D68CF14A2A23DBC',7889400,0,'3 Month'),(325,'E4A094BCACE3839E',7889400,0,'3 Month'),(326,'96AF78E0CF8F9B89',7889400,0,'3 Month'),(327,'0FBC6D5EE8A2C8A5',7889400,0,'3 Month'),(328,'D7C8295BDBF35333',7889400,0,'3 Month'),(329,'EB6A823379709D6D',7889400,0,'3 Month'),(330,'A6A777205E09F050',7889400,0,'3 Month'),(331,'8AD11256C63D45A1',7889400,0,'3 Month'),(332,'145FFFD3194DAA9E',7889400,0,'3 Month'),(333,'EF71B2F721BF1C25',7889400,0,'3 Month'),(334,'97785200BEDD0A3C',7889400,0,'3 Month'),(335,'A48C7D74D612D633',7889400,0,'3 Month'),(336,'47284035A0627C30',7889400,0,'3 Month'),(337,'83675C7C5D9224E4',7889400,0,'3 Month'),(338,'C5141CC2AE974113',7889400,0,'3 Month'),(339,'9AFF281B035F9B38',7889400,0,'3 Month'),(340,'3D671515A8D2151A',7889400,0,'3 Month'),(341,'57570C42A1778E13',7889400,0,'3 Month'),(342,'01166855CF55B224',7889400,0,'3 Month'),(343,'E15A87D713295A56',7889400,0,'3 Month'),(344,'73F29AB86F674864',7889400,0,'3 Month'),(345,'4E9E466FDF2AE9F1',7889400,0,'3 Month'),(346,'4B137508E634CDA3',7889400,0,'3 Month'),(347,'688C6B4A1CE35A43',7889400,0,'3 Month'),(348,'202AFEC3424F96F5',7889400,0,'3 Month'),(349,'C5B0361FAD82E349',7889400,0,'3 Month'),(350,'43C9CB813179E564',7889400,0,'3 Month'),(351,'EEAA9FDCE091CCB9',7889400,0,'3 Month'),(352,'7D056A2A72632456',7889400,0,'3 Month'),(353,'B2353B08FCCC8718',7889400,0,'3 Month'),(354,'24B3B33E7B9EA47C',7889400,0,'3 Month'),(355,'EA6C6B595F1ED5E0',7889400,0,'3 Month'),(356,'4AD8A4ECD5745BEE',7889400,0,'3 Month'),(357,'AFA28007C5AC8A8E',7889400,0,'3 Month'),(358,'42A66269227BE1D2',7889400,0,'3 Month'),(359,'7752967D1FBB833B',7889400,0,'3 Month'),(360,'8E88AD90DDEA5050',7889400,0,'3 Month'),(361,'C649D983BD7790AF',7889400,0,'3 Month'),(362,'392F43F0EF08EF85',7889400,0,'3 Month'),(363,'F56FD62982C1E05D',7889400,0,'3 Month'),(364,'08F88437EE746EA2',7889400,0,'3 Month'),(365,'713654A6E03E04E5',7889400,0,'3 Month'),(366,'7FE9879FB2A220C0',7889400,0,'3 Month'),(367,'7FF2003C506AEBD4',7889400,0,'3 Month'),(368,'13992B85F55A83D1',7889400,0,'3 Month'),(369,'E3291858049E3F43',7889400,0,'3 Month'),(370,'7BB6E292DD028BDD',7889400,0,'3 Month'),(371,'22B293C8BC58D5D7',7889400,0,'3 Month'),(372,'3E3A159C449A81F1',7889400,0,'3 Month'),(373,'DD3F79B043DA60BC',7889400,0,'3 Month'),(374,'D66BDA6D57C56345',7889400,0,'3 Month'),(375,'6D1AC6394DAEB20A',7889400,0,'3 Month'),(376,'CF7D0EFE1FAC35DE',7889400,0,'3 Month'),(377,'FF120919F36E170D',7889400,0,'3 Month'),(378,'25502EE1A0984868',7889400,0,'3 Month'),(379,'097A4D51A67F562B',7889400,0,'3 Month'),(380,'B8DB7BBE232F3E61',7889400,0,'3 Month'),(381,'7560A02F8A36E266',7889400,0,'3 Month'),(382,'A5AE82BD1C7B0F80',7889400,0,'3 Month'),(383,'041F38831396D3DB',7889400,0,'3 Month'),(384,'9B3AC37DA0B601F3',7889400,0,'3 Month'),(385,'F61BBA85D98A7C14',7889400,0,'3 Month'),(386,'CAC90BC205D033F5',7889400,0,'3 Month'),(387,'F594F87513B2F614',7889400,0,'3 Month'),(388,'38479548799B7ABB',7889400,0,'3 Month'),(389,'45EBA4FC119A3243',7889400,0,'3 Month'),(390,'9538873FB2B2363C',7889400,0,'3 Month'),(391,'5A616B819F1C0CA7',7889400,0,'3 Month'),(392,'D8BDB9E3D26B504B',7889400,0,'3 Month'),(393,'131F65C8AD3E8892',7889400,0,'3 Month'),(394,'7F38F1BD31D14F7F',7889400,0,'3 Month'),(395,'9010DBC6AEC5225F',7889400,0,'3 Month'),(396,'6628B23C250B9AC2',7889400,0,'3 Month'),(397,'38EDCAE6CBEC2D78',7889400,0,'3 Month'),(398,'6DCF5C4D22BC86D3',7889400,0,'3 Month'),(399,'2F69EFFF9B3BC4A6',7889400,0,'3 Month'),(400,'4C4DEBF4EF7CD0D7',7889400,0,'3 Month'),(401,'66BD58B3FB3598B4',7889400,0,'3 Month'),(402,'F4E871091C62F711',7889400,0,'3 Month'),(403,'03D41234EAB1C699',7889400,0,'3 Month'),(404,'B6DA1896B6656608',7889400,0,'3 Month'),(405,'5FA9F02F2DE96E21',7889400,0,'3 Month'),(406,'FE12DB9BB1C73E61',7889400,0,'3 Month'),(407,'7C835E185C7AB15D',7889400,0,'3 Month'),(408,'96C90A293D8CEE27',7889400,0,'3 Month'),(409,'713886A12DB09940',7889400,0,'3 Month'),(410,'F23A9F40B9B8A677',7889400,0,'3 Month'),(411,'20761DC6CAF310A3',7889400,0,'3 Month'),(412,'6664CC1FEE9955D6',7889400,0,'3 Month'),(413,'9F92097CC3D2B5FD',7889400,0,'3 Month'),(414,'BB2B5F28CDA0D5F2',7889400,0,'3 Month'),(415,'1871019FB271D15A',7889400,0,'3 Month'),(416,'B6B847F1AF1837EC',7889400,0,'3 Month'),(417,'E0F79FB9409ED56D',7889400,0,'3 Month'),(418,'5250926D0F63A860',7889400,0,'3 Month'),(419,'2360850CE38D3A4F',7889400,0,'3 Month'),(420,'CE380A1259E54260',7889400,0,'3 Month'),(421,'3BCE1C4A433F6C44',7889400,0,'3 Month'),(422,'DD98C1A3AD1BFF07',7889400,0,'3 Month'),(423,'447A9288678C3D0D',7889400,0,'3 Month'),(424,'1815C779C78904F4',7889400,0,'3 Month'),(425,'D9CAE75F29D54512',7889400,0,'3 Month'),(426,'816459E482463536',7889400,0,'3 Month'),(427,'AD775E8E1899BA71',7889400,0,'3 Month'),(428,'7548F6A1CD1024C7',7889400,0,'3 Month'),(429,'05608068D9BA8916',7889400,0,'3 Month'),(430,'6CEDC5BC7C3312D7',7889400,0,'3 Month'),(431,'F616FCDFEDFE5EF4',7889400,0,'3 Month'),(432,'91569CD81354F70C',7889400,0,'3 Month'),(433,'F9A6DF80E75C303E',7889400,0,'3 Month'),(434,'25133E616DD1AFC0',7889400,0,'3 Month'),(435,'B0F2FBB643AF51CD',7889400,0,'3 Month'),(436,'B9E24C9E4DCCC102',7889400,0,'3 Month'),(437,'F5E56C27E6622761',7889400,0,'3 Month'),(438,'61986AF1D0C53AC8',7889400,0,'3 Month'),(439,'3EA2B525CACE0191',7889400,0,'3 Month'),(440,'684592AD881367E1',7889400,0,'3 Month'),(441,'4E9D4787F5B1A348',7889400,0,'3 Month'),(442,'59C7038B44F835F4',7889400,0,'3 Month'),(443,'93FFB2CBBEE4F067',7889400,0,'3 Month'),(444,'3158A322F5F757BC',7889400,0,'3 Month'),(445,'45858DD0E86B7897',7889400,0,'3 Month'),(446,'64ED90428750932D',7889400,0,'3 Month'),(447,'7B46727B3C1829F7',7889400,0,'3 Month'),(448,'46874860E65D89D2',7889400,0,'3 Month'),(449,'5E8FE9EFF5378CE5',7889400,0,'3 Month'),(450,'757F1E49FD05176B',7889400,0,'3 Month'),(451,'8DC6BBB4F579241D',7889400,0,'3 Month'),(452,'183E86BD4C5B2082',7889400,0,'3 Month'),(453,'62FA4A071E2295AE',7889400,0,'3 Month'),(454,'CDD52ABCDDE6B7D2',7889400,0,'3 Month'),(455,'D3D280FA70D5007A',7889400,0,'3 Month'),(456,'EF27A43CBE194A14',7889400,0,'3 Month'),(457,'CFDEF1C60143439B',7889400,0,'3 Month'),(458,'ACB46DF62A98EC7D',7889400,0,'3 Month'),(459,'FEE98A0CF8980F74',7889400,0,'3 Month'),(460,'B00E1E9A84A73005',7889400,0,'3 Month'),(461,'D56C42FBFD78738A',7889400,0,'3 Month'),(462,'6BBC1CC066B48101',7889400,0,'3 Month'),(463,'2600EFC91D8E187B',7889400,0,'3 Month'),(464,'2FC194F4F37D8030',7889400,0,'3 Month'),(465,'7E660E7E9EBA3386',7889400,0,'3 Month'),(466,'CB726C80778BF346',7889400,0,'3 Month'),(467,'9D131A8E67AF5008',7889400,0,'3 Month'),(468,'B574A45D13BCDF69',7889400,0,'3 Month'),(469,'3F4931AD0D6ECA9C',7889400,0,'3 Month'),(470,'016170A04D9B8111',7889400,0,'3 Month'),(471,'DFE96695F45739F8',7889400,0,'3 Month'),(472,'FC35B56EE05B4846',7889400,0,'3 Month'),(473,'628D496074B89950',7889400,0,'3 Month'),(474,'4081CADF698816E5',7889400,0,'3 Month'),(475,'2BB427FE24118FB1',7889400,0,'3 Month'),(476,'C0E1F4B50D64AE75',7889400,0,'3 Month'),(477,'1FD69286179FCC05',7889400,0,'3 Month'),(478,'F3E582BF444E36C1',7889400,0,'3 Month'),(479,'33DB7F81ED8FED04',7889400,0,'3 Month'),(480,'BD6A04063B2C3391',7889400,0,'3 Month'),(481,'CDA328FC25797AA6',7889400,0,'3 Month'),(482,'82EE9AD48786BEF3',7889400,0,'3 Month'),(483,'92532C9C5BA88DA9',7889400,0,'3 Month'),(484,'922B76E92A3CEBB4',7889400,0,'3 Month'),(485,'A8D6647494A7039C',7889400,0,'3 Month'),(486,'2012F5853B20D1A4',7889400,0,'3 Month'),(487,'F67701B50BDDAEA3',7889400,0,'3 Month'),(488,'E39E5CD514DA92D2',7889400,0,'3 Month'),(489,'8502B2F852ACFCE8',7889400,0,'3 Month'),(490,'B636667F1F83FE03',7889400,0,'3 Month'),(491,'5E1530B27622A660',7889400,0,'3 Month'),(492,'7BBA9493845F5F73',7889400,0,'3 Month'),(493,'F76F89C014426F97',7889400,0,'3 Month'),(494,'51A2DE136922A7C9',7889400,0,'3 Month'),(495,'F8E7B8ACD095E66C',7889400,0,'3 Month'),(496,'2794D900A0DFFAC8',7889400,0,'3 Month'),(497,'3644F6D1DC36EA56',7889400,0,'3 Month'),(498,'7EBF1D30B6EF92B1',7889400,0,'3 Month'),(499,'7BE76492FBFAF19D',7889400,0,'3 Month'),(500,'69A47BAB47833176',7889400,0,'3 Month'),(501,'C78FC44B08A447A6',15778800,0,'6 Month'),(502,'6291184F16A6DB7C',15778800,0,'6 Month'),(503,'65D2B4AA3B499B1C',15778800,0,'6 Month'),(504,'C3B380B0BAE98437',15778800,0,'6 Month'),(505,'397C1E32F1272E59',15778800,0,'6 Month'),(506,'0296A0A38B39E6AD',15778800,0,'6 Month'),(507,'845561BC3AFF8F10',15778800,0,'6 Month'),(508,'40F26C6CA4CB91B6',15778800,0,'6 Month'),(509,'CD8C06F7301EA528',15778800,0,'6 Month'),(510,'0F4016B36EBF5C49',15778800,0,'6 Month'),(511,'AF6CC36327716962',15778800,0,'6 Month'),(512,'F3F2871F83DB0B80',15778800,0,'6 Month'),(513,'AD0B17132768C61D',15778800,0,'6 Month'),(514,'1BA40BEF84F1F2C4',15778800,0,'6 Month'),(515,'3C85FB72DEE27ADF',15778800,0,'6 Month'),(516,'24BC75BD427496D5',15778800,0,'6 Month'),(517,'A3FBB17C898DB1B1',15778800,0,'6 Month'),(518,'2AC2B71F2D4821DA',15778800,0,'6 Month'),(519,'3C6EDA327828B8D3',15778800,0,'6 Month'),(520,'21DDF2E05E08AB02',15778800,0,'6 Month'),(521,'C39DD4FAD3C3D15C',15778800,0,'6 Month'),(522,'596E20812E4CE8A1',15778800,0,'6 Month'),(523,'5468F4AEE3C06220',15778800,0,'6 Month'),(524,'4CC24A90169941BF',15778800,0,'6 Month'),(525,'AAEA3CDB3ED921F5',15778800,0,'6 Month'),(526,'DD7F42B1106ED165',15778800,0,'6 Month'),(527,'4E2EE086B9F5EC15',15778800,0,'6 Month'),(528,'0B595659D252ADA4',15778800,0,'6 Month'),(529,'20A343EBCC6A9B67',15778800,0,'6 Month'),(530,'4A4AB97E580E15B5',15778800,0,'6 Month'),(531,'3F38906A26135CE6',15778800,0,'6 Month'),(532,'A905C03679560F9E',15778800,0,'6 Month'),(533,'C2FA356942054545',15778800,0,'6 Month'),(534,'AEE98112A3A34D7B',15778800,0,'6 Month'),(535,'E43DE7ABEC1C062D',15778800,0,'6 Month'),(536,'2EC57EEBEB61D469',15778800,0,'6 Month'),(537,'31B375557046E96A',15778800,0,'6 Month'),(538,'81B3D9D5BE7DD3A8',15778800,0,'6 Month'),(539,'E97A229BA511C917',15778800,0,'6 Month'),(540,'10B9F96CBB0B2AC7',15778800,0,'6 Month'),(541,'A091EB2719AD8C36',15778800,0,'6 Month'),(542,'D6C241792FC2EBC0',15778800,0,'6 Month'),(543,'96B1A1083AA4B846',15778800,0,'6 Month'),(544,'05B46F1F74CBBA68',15778800,0,'6 Month'),(545,'1EF45066113B12A3',15778800,0,'6 Month'),(546,'4CE48A67B37FAD63',15778800,0,'6 Month'),(547,'6F44CD706913B3B9',15778800,0,'6 Month'),(548,'F57156F9C030CBCD',15778800,0,'6 Month'),(549,'A496DAD5DECD8BCE',15778800,0,'6 Month'),(550,'C81CAD5FB2715B32',15778800,0,'6 Month'),(551,'369406EA7399C7B4',15778800,0,'6 Month'),(552,'B86F0F834852B2AB',15778800,0,'6 Month'),(553,'59A1A53E41D26C45',15778800,0,'6 Month'),(554,'FB72B0BFE4DDB788',15778800,0,'6 Month'),(555,'9522C85AF2188ED4',15778800,0,'6 Month'),(556,'B796868C1AC74D3B',15778800,0,'6 Month'),(557,'5BCE6FE563C64BA4',15778800,0,'6 Month'),(558,'43F61A363A702555',15778800,0,'6 Month'),(559,'072B1F3622EBC023',15778800,0,'6 Month'),(560,'E4A13131D26CD18D',15778800,0,'6 Month'),(561,'970CCBD8BE7ADB74',15778800,0,'6 Month'),(562,'AFF0F2A06D3B7E76',15778800,0,'6 Month'),(563,'B53437020169D8A7',15778800,0,'6 Month'),(564,'2950C23071FCD38E',15778800,0,'6 Month'),(565,'7F5E09F8E317921F',15778800,0,'6 Month'),(566,'32ABAB46B487B6EA',15778800,0,'6 Month'),(567,'03D7FF9CA630E1C9',15778800,0,'6 Month'),(568,'737D74E9FA3D838E',15778800,0,'6 Month'),(569,'B7B2461BC891CEA5',15778800,0,'6 Month'),(570,'C7A352025CE9CE48',15778800,0,'6 Month'),(571,'0CBCC08991E53B39',15778800,0,'6 Month'),(572,'49FFE6F5DA7B7F4A',15778800,0,'6 Month'),(573,'243B2C44521DD487',15778800,0,'6 Month'),(574,'D07ACD46E6C6503E',15778800,0,'6 Month'),(575,'ADFECE3E117DC241',15778800,0,'6 Month'),(576,'5330117B2A9843BF',15778800,0,'6 Month'),(577,'B0A095C43A951A10',15778800,0,'6 Month'),(578,'10225416BB54CE2F',15778800,0,'6 Month'),(579,'782E6FE4B2AB625E',15778800,0,'6 Month'),(580,'CF283B63F6F9D550',15778800,0,'6 Month'),(581,'6135BD9FD57CD343',15778800,0,'6 Month'),(582,'FC075A4265FD20C8',15778800,0,'6 Month'),(583,'40AB85ECA73569A7',15778800,0,'6 Month'),(584,'0E3DFD35EC241BAE',15778800,0,'6 Month'),(585,'2BAF49E8224B897C',15778800,0,'6 Month'),(586,'E5D6ADA00B3DFAC9',15778800,0,'6 Month'),(587,'729EDC066C54D320',15778800,0,'6 Month'),(588,'E34FEF38E3609E46',15778800,0,'6 Month'),(589,'861E1FDE68C5FB37',15778800,0,'6 Month'),(590,'C43108E7223D9345',15778800,0,'6 Month'),(591,'F0753F5BA75FAB54',15778800,0,'6 Month'),(592,'E29AFF7D26146C10',15778800,0,'6 Month'),(593,'0888444915FF7A50',15778800,0,'6 Month'),(594,'FCE364B1339BC2A9',15778800,0,'6 Month'),(595,'B30F63EAF9E81B1C',15778800,0,'6 Month'),(596,'24A418F268BAD9B8',15778800,0,'6 Month'),(597,'5D3A0D26467BB4C6',15778800,0,'6 Month'),(598,'7A266FC3DEF2E3F1',15778800,0,'6 Month'),(599,'BED174407533F891',15778800,0,'6 Month'),(600,'705A94E88D6B71F1',15778800,0,'6 Month'),(601,'DB16E251ACB3BFE0',15778800,0,'6 Month'),(602,'3FE4B2CE9EA97435',15778800,0,'6 Month'),(603,'73B4A787821FA6C1',15778800,0,'6 Month'),(604,'9F56E6214E80321D',15778800,0,'6 Month'),(605,'365730BDD3EF9BD4',15778800,0,'6 Month'),(606,'849913BD5A9E27FA',15778800,0,'6 Month'),(607,'809C879B7274DF7C',15778800,0,'6 Month'),(608,'F3BA308603D94A3C',15778800,0,'6 Month'),(609,'F8F6820968D2CD5D',15778800,0,'6 Month'),(610,'0487577F048E59DA',15778800,0,'6 Month'),(611,'E7D6FE2209A3B523',15778800,0,'6 Month'),(612,'DEA69BAD2340FF5B',15778800,0,'6 Month'),(613,'C01868F8453A579F',15778800,0,'6 Month'),(614,'B4D6C268BC0DCF79',15778800,0,'6 Month'),(615,'01A3000D783AAD1F',15778800,0,'6 Month'),(616,'BF0831F7BC36DF1A',15778800,0,'6 Month'),(617,'6F344A213512CC94',15778800,0,'6 Month'),(618,'30D5E69578996578',15778800,0,'6 Month'),(619,'02B176401E81A79B',15778800,0,'6 Month'),(620,'5CA41F371E93ED3B',15778800,0,'6 Month'),(621,'AE989E57F04A271A',15778800,0,'6 Month'),(622,'D9E2144302467AE2',15778800,0,'6 Month'),(623,'8D6D717277CAC4DD',15778800,0,'6 Month'),(624,'4FBF9E8DAD597CA8',15778800,0,'6 Month'),(625,'1AC8769E3113D508',15778800,0,'6 Month'),(626,'B08E8038607BBEDD',15778800,0,'6 Month'),(627,'57787C722058C7F0',15778800,0,'6 Month'),(628,'AE2883F905B7AB34',15778800,0,'6 Month'),(629,'46CBA774C79F53C1',15778800,0,'6 Month'),(630,'415158304E767D07',15778800,0,'6 Month'),(631,'416808D35532A2AC',15778800,0,'6 Month'),(632,'AE0B3A72786146AD',15778800,0,'6 Month'),(633,'7725891C09A97202',15778800,0,'6 Month'),(634,'738584A4E0937671',15778800,0,'6 Month'),(635,'892F5FECBF532C78',15778800,0,'6 Month'),(636,'3DE554064195B263',15778800,0,'6 Month'),(637,'A39FE5A1A49DC7CD',15778800,0,'6 Month'),(638,'58CE8C9B4DDA6183',15778800,0,'6 Month'),(639,'3F1D31945300A225',15778800,0,'6 Month'),(640,'454C369948535760',15778800,0,'6 Month'),(641,'275130FC0B740728',15778800,0,'6 Month'),(642,'606F86BE2608752B',15778800,0,'6 Month'),(643,'D21886928BA71DC1',15778800,0,'6 Month'),(644,'A51C9BE5FB22B808',15778800,0,'6 Month'),(645,'B0A6EF1E87BF1F59',15778800,0,'6 Month'),(646,'0FE18EA0C11814A8',15778800,0,'6 Month'),(647,'906BE656081AEE46',15778800,0,'6 Month'),(648,'A6967592E2133A31',15778800,0,'6 Month'),(649,'E3FB5E688A47459D',15778800,0,'6 Month'),(650,'0357AC362BE088A0',15778800,0,'6 Month'),(651,'653F1F2A5AC54062',15778800,0,'6 Month'),(652,'54473D99A80A552F',15778800,0,'6 Month'),(653,'264ED9C85D84F69C',15778800,0,'6 Month'),(654,'B488395F7C9257D5',15778800,0,'6 Month'),(655,'96268064EA30719F',15778800,0,'6 Month'),(656,'C6FE6914A8E9D7EF',15778800,0,'6 Month'),(657,'4D8CCAFCC3B7C7E6',15778800,0,'6 Month'),(658,'05D14D44731CD53D',15778800,0,'6 Month'),(659,'A7DF0F2DE578EA06',15778800,0,'6 Month'),(660,'6D405880AB4ADD6E',15778800,0,'6 Month'),(661,'33EE803D4F7F282D',15778800,0,'6 Month'),(662,'67B9AFA85F680B17',15778800,0,'6 Month'),(663,'CBBBF7AE21528467',15778800,0,'6 Month'),(664,'A5672CF1ACB10078',15778800,0,'6 Month'),(665,'0360B44FB2673B17',15778800,0,'6 Month'),(666,'D85D5D0C0288D380',15778800,0,'6 Month'),(667,'B036200765266199',15778800,0,'6 Month'),(668,'9C2F99DAC8FC0DDA',15778800,0,'6 Month'),(669,'EB8607C45B515D2A',15778800,0,'6 Month'),(670,'21B21C3C66332C31',15778800,0,'6 Month'),(671,'9875642B0AFF0A64',15778800,0,'6 Month'),(672,'E2F6B2220126CFCF',15778800,0,'6 Month'),(673,'69FE9AD3A197A057',15778800,0,'6 Month'),(674,'1F33C6D6B65EC59F',15778800,0,'6 Month'),(675,'088D5181E767DEEE',15778800,0,'6 Month'),(676,'B03A0453D4A10D5A',15778800,0,'6 Month'),(677,'048B405748B098B1',15778800,0,'6 Month'),(678,'3E15246B9526A04F',15778800,0,'6 Month'),(679,'DA287DCD99355B97',15778800,0,'6 Month'),(680,'FD8B3A68A352B00D',15778800,0,'6 Month'),(681,'BD9EE0EEDE5B05AA',15778800,0,'6 Month'),(682,'175B91A7DA41E6E8',15778800,0,'6 Month'),(683,'8A3CFCA223FB7278',15778800,0,'6 Month'),(684,'36B37A544161A397',15778800,0,'6 Month'),(685,'4022ADD0E66953B0',15778800,0,'6 Month'),(686,'A1FF165CBA26A0C9',15778800,0,'6 Month'),(687,'380EF314BB98B378',15778800,0,'6 Month'),(688,'8ACED77EF5C94750',15778800,0,'6 Month'),(689,'AB914200FC5E30B2',15778800,0,'6 Month'),(690,'497D08891061FF2D',15778800,0,'6 Month'),(691,'03E70EAB79277D6D',15778800,0,'6 Month'),(692,'37FF3AF9C005F79D',15778800,0,'6 Month'),(693,'BB22DCB8A0495B9C',15778800,0,'6 Month'),(694,'6C8141A0CA3E5D72',15778800,0,'6 Month'),(695,'206B9E2037BB467D',15778800,0,'6 Month'),(696,'A227D15E512BE45D',15778800,0,'6 Month'),(697,'10F6CA7338CD2433',15778800,0,'6 Month'),(698,'D1DD3A690375CBCE',15778800,0,'6 Month'),(699,'194B5F05E91D8062',15778800,0,'6 Month'),(700,'292C398ECB2A056E',15778800,0,'6 Month'),(701,'552D5437B100A050',31557600,0,'1 Year'),(702,'C97BC75C11CC9832',31557600,0,'1 Year'),(703,'76DAD12ACDA43D47',31557600,0,'1 Year'),(704,'6E2C0A841082AC5E',31557600,0,'1 Year'),(705,'EBACE8F7160D576F',31557600,0,'1 Year'),(706,'303E940A3D948C72',31557600,0,'1 Year'),(707,'3A158B385B85EBB3',31557600,0,'1 Year'),(708,'5B45D600C686AEF8',31557600,0,'1 Year'),(709,'9DA2863994D7E173',31557600,0,'1 Year'),(710,'167DF217DD6FFF7A',31557600,0,'1 Year'),(711,'FDCB2C93CBAD6D33',31557600,0,'1 Year'),(712,'C807D07E1B0D8D83',31557600,0,'1 Year'),(713,'2B2558913712B12A',31557600,0,'1 Year'),(714,'C89DDF779BC10CAE',31557600,0,'1 Year'),(715,'4744E060FA7CE259',31557600,0,'1 Year'),(716,'DB494AEBBCD844FF',31557600,0,'1 Year'),(717,'EDC1C1773E445FB9',31557600,0,'1 Year'),(718,'CC60978FD9EE219B',31557600,0,'1 Year'),(719,'D514793003285DF8',31557600,0,'1 Year'),(720,'9862D8694FE2BD5E',31557600,0,'1 Year'),(721,'E5AF2306A02C7CF9',31557600,0,'1 Year'),(722,'15F371074AE2C955',31557600,0,'1 Year'),(723,'4CFCBD68FB3506E1',31557600,0,'1 Year'),(724,'FFA6980B76B59E95',31557600,0,'1 Year'),(725,'C0B0161056AEFE0A',31557600,0,'1 Year'),(726,'A746E1B9956361C2',31557600,0,'1 Year'),(727,'496F0B84A7A50533',31557600,0,'1 Year'),(728,'3B8F17E0D39B56BD',31557600,0,'1 Year'),(729,'D6CE40A65D947F8B',31557600,0,'1 Year'),(730,'84F031B8C14D7D43',31557600,0,'1 Year'),(731,'C45E7A6933A2D664',31557600,0,'1 Year'),(732,'7B88E57FB1A4C230',31557600,0,'1 Year'),(733,'D9D7228C433FCDD6',31557600,0,'1 Year'),(734,'4D0426864A8556A9',31557600,0,'1 Year'),(735,'D80C743653033A88',31557600,0,'1 Year'),(736,'D99C14954C854DAF',31557600,0,'1 Year'),(737,'2CA5FA0B312AE4D7',31557600,0,'1 Year'),(738,'A15C697088513A06',31557600,0,'1 Year'),(739,'CBF47A3C41E8280E',31557600,0,'1 Year'),(740,'6F494CF2BCBC9EA2',31557600,0,'1 Year'),(741,'5ECBBD2505701CED',31557600,0,'1 Year'),(742,'3B96DE6F6E7B7263',31557600,0,'1 Year'),(743,'8336EE74805FF64A',31557600,0,'1 Year'),(744,'3F2B1A34DDCF3D85',31557600,0,'1 Year'),(745,'708A8B287A645611',31557600,0,'1 Year'),(746,'B8E4AD656B744DAD',31557600,0,'1 Year'),(747,'091C99D7AC7BE348',31557600,0,'1 Year'),(748,'74B7FEE46DF25236',31557600,0,'1 Year'),(749,'639B064F6BBA3006',31557600,0,'1 Year'),(750,'A4EF14D181A289B5',31557600,0,'1 Year'),(751,'E5F2CEBEB9EE5534',31557600,0,'1 Year'),(752,'B7530C881ED5F56F',31557600,0,'1 Year'),(753,'282EB5E5EC1EA539',31557600,0,'1 Year'),(754,'20DE0F0B53774C89',31557600,0,'1 Year'),(755,'0A99E96BFF164EFF',31557600,0,'1 Year'),(756,'26972B3BE491D980',31557600,0,'1 Year'),(757,'94C87F35F101A92E',31557600,0,'1 Year'),(758,'6B11919ABC329014',31557600,0,'1 Year'),(759,'E6A3194A17FD295C',31557600,0,'1 Year'),(760,'CC56EE136787A418',31557600,0,'1 Year'),(761,'6A1CD9968636C3F1',31557600,0,'1 Year'),(762,'6ACCBE3D069CD353',31557600,0,'1 Year'),(763,'CC4D7FEDFD38467A',31557600,0,'1 Year'),(764,'B8D60152F9790715',31557600,0,'1 Year'),(765,'AD9FD34FB8EC454F',31557600,0,'1 Year'),(766,'5BEAC673419733CF',31557600,0,'1 Year'),(767,'30C43C95B6246002',31557600,0,'1 Year'),(768,'69E167AFA32753B2',31557600,0,'1 Year'),(769,'E86A7D690A3C71FD',31557600,0,'1 Year'),(770,'A9930095FB8B9B1B',31557600,0,'1 Year'),(771,'DACE61AB3C2AE77E',31557600,0,'1 Year'),(772,'FB302BC0234FB315',31557600,0,'1 Year'),(773,'1D6576398BAD0211',31557600,0,'1 Year'),(774,'958226E748894E3C',31557600,0,'1 Year'),(775,'57FB401568A0A650',31557600,0,'1 Year'),(776,'5FDE922D36E772EA',31557600,0,'1 Year'),(777,'A244BB68DE17D354',31557600,0,'1 Year'),(778,'56B69614F69DDCD6',31557600,0,'1 Year'),(779,'9387897228AB72B5',31557600,0,'1 Year'),(780,'AAB31A472EBF9168',31557600,0,'1 Year'),(781,'E47E8E92A8D7E830',31557600,0,'1 Year'),(782,'1C6A0201F3E2EF79',31557600,0,'1 Year'),(783,'E989114CAECA4242',31557600,0,'1 Year'),(784,'B649AD6FB44D7CD0',31557600,0,'1 Year'),(785,'B0B4102ABEC50050',31557600,0,'1 Year'),(786,'AAC347B6A2738FAB',31557600,0,'1 Year'),(787,'95C8C941420F341C',31557600,0,'1 Year'),(788,'EDAA986C47D563AC',31557600,0,'1 Year'),(789,'6FC74AC6E3FF770A',31557600,0,'1 Year'),(790,'38ADD9C572421589',31557600,0,'1 Year'),(791,'DD710D409508B8B7',31557600,0,'1 Year'),(792,'38B4306FD5275A79',31557600,0,'1 Year'),(793,'B51280D870C4CA75',31557600,0,'1 Year'),(794,'4105CB56F134D9DA',31557600,0,'1 Year'),(795,'83AC4DC4F94AA8F9',31557600,0,'1 Year'),(796,'7D813B0329DABC19',31557600,0,'1 Year'),(797,'0BADE1AF6EE2FEBB',31557600,0,'1 Year'),(798,'6BEEDB4846CCEFD3',31557600,0,'1 Year'),(799,'CA7EBEA97A4C78E0',31557600,0,'1 Year'),(800,'2F4D37FCF3911644',31557600,0,'1 Year'),(801,'694467B67ADC55E9',31557600,0,'1 Year'),(802,'61F69F44F25B58AE',31557600,0,'1 Year'),(803,'39688F83200857D3',31557600,0,'1 Year'),(804,'1B8230F9C1D24AF4',31557600,0,'1 Year'),(805,'17F6E43E5D61C06F',31557600,0,'1 Year'),(806,'984D9E5FD846C364',31557600,0,'1 Year'),(807,'0BD407AA0D921C62',31557600,0,'1 Year'),(808,'F4AA9A2B97DE62D8',31557600,0,'1 Year'),(809,'5EE532EA7434058D',31557600,0,'1 Year'),(810,'757BF0BDC26CA88B',31557600,0,'1 Year'),(811,'23A3FD7E95D5C3F5',31557600,0,'1 Year'),(812,'199470B404B35873',31557600,0,'1 Year'),(813,'0B0F388318D9CEDB',31557600,0,'1 Year'),(814,'F2C0410132498472',31557600,0,'1 Year'),(815,'B9EB31F3E6B0BD1A',31557600,0,'1 Year'),(816,'850773333140A61F',31557600,0,'1 Year'),(817,'00AF02D6350FBDD1',31557600,0,'1 Year'),(818,'40C24987422B3EF6',31557600,0,'1 Year'),(819,'5D3CE07E9178E6A1',31557600,0,'1 Year'),(820,'BB2DB584EE625185',31557600,0,'1 Year'),(821,'0983E0D5387AFCA2',31557600,0,'1 Year'),(822,'BF01A53DE16B2891',31557600,0,'1 Year'),(823,'9082A7A20378B4FC',31557600,0,'1 Year'),(824,'468FAAD95E6FDC63',31557600,0,'1 Year'),(825,'D51D42E99302E35F',31557600,0,'1 Year'),(826,'421E24EEF15EC019',31557600,0,'1 Year'),(827,'0B9B5D0EBE664491',31557600,0,'1 Year'),(828,'981BB78AA87D6F5E',31557600,0,'1 Year'),(829,'EE3C93D784BBBCD8',31557600,0,'1 Year'),(830,'B538E9F6D7D021B1',31557600,0,'1 Year'),(831,'D926135FD1DEA65C',31557600,0,'1 Year'),(832,'9C211F9B43DDDD97',31557600,0,'1 Year'),(833,'7583EF54EAC6F278',31557600,0,'1 Year'),(834,'DFFFB87C00AD35CD',31557600,0,'1 Year'),(835,'7BB0C7CD3C5C3B0C',31557600,0,'1 Year'),(836,'998459985453C26E',31557600,0,'1 Year'),(837,'9C93E21E2B197143',31557600,0,'1 Year'),(838,'BFCE1288949D0AFC',31557600,0,'1 Year'),(839,'8A5BB538FBB79D8B',31557600,0,'1 Year'),(840,'F92A17F806681A12',31557600,0,'1 Year'),(841,'736049633E0DB211',31557600,0,'1 Year'),(842,'C6C59733D75EF3C8',31557600,0,'1 Year'),(843,'C5B25CE5877D94C4',31557600,0,'1 Year'),(844,'338BF058FD3A9A9B',31557600,0,'1 Year'),(845,'8E158A1A5B2F0930',31557600,0,'1 Year'),(846,'B94ACAAED8FA0340',31557600,0,'1 Year'),(847,'FA445E9199B30230',31557600,0,'1 Year'),(848,'FEC23F3A946A14A8',31557600,0,'1 Year'),(849,'13479E0466920E0C',31557600,0,'1 Year'),(850,'6FEFE6949AF1C5B2',31557600,0,'1 Year'),(851,'939FDCC0EB0A6532',31557600,0,'1 Year'),(852,'3E2743C54DD77CFF',31557600,0,'1 Year'),(853,'B54D8E0593717035',31557600,0,'1 Year'),(854,'DC346F7C17EAEC92',31557600,0,'1 Year'),(855,'D9971407BA2841A3',31557600,0,'1 Year'),(856,'20A0A3FA39F5186E',31557600,0,'1 Year'),(857,'B48CFC360020EFAC',31557600,0,'1 Year'),(858,'48C0E5BED54FC37C',31557600,0,'1 Year'),(859,'2C0A4CD7FD651928',31557600,0,'1 Year'),(860,'37C977FA01735771',31557600,0,'1 Year'),(861,'2039707EC908D390',31557600,0,'1 Year'),(862,'A976BA5CC2FDC92C',31557600,0,'1 Year'),(863,'1582400CAEEE9C7E',31557600,0,'1 Year'),(864,'8ED2B090B0E5DB95',31557600,0,'1 Year'),(865,'FE6EC191D0EA6CFC',31557600,0,'1 Year'),(866,'89993CD48A1E09F0',31557600,0,'1 Year'),(867,'E1A1346E53B519A4',31557600,0,'1 Year'),(868,'C219CD8479CD62A0',31557600,0,'1 Year'),(869,'D48A7B1E954A6896',31557600,0,'1 Year'),(870,'E1E2EE4453A7C2F3',31557600,0,'1 Year'),(871,'8576F0F6B7B7729C',31557600,0,'1 Year'),(872,'309F69C162E50593',31557600,0,'1 Year'),(873,'B6DD0F1F9C06D354',31557600,0,'1 Year'),(874,'51D8F22699503440',31557600,0,'1 Year'),(875,'F320885204556C99',31557600,0,'1 Year'),(876,'69F98C51E4DBBAE5',31557600,0,'1 Year'),(877,'A5AF9D66DB0117E9',31557600,0,'1 Year'),(878,'9CC7E8401368B855',31557600,0,'1 Year'),(879,'1C01070C14753C1A',31557600,0,'1 Year'),(880,'B958967C13E39AB2',31557600,0,'1 Year'),(881,'D21D481403F9C1BB',31557600,0,'1 Year'),(882,'7B22169F178B3DDD',31557600,0,'1 Year'),(883,'5435B74C64FCB816',31557600,0,'1 Year'),(884,'4D5293FEEA99EFAD',31557600,0,'1 Year'),(885,'DAD25CADC59643E1',31557600,0,'1 Year'),(886,'DB616A873F3E16D5',31557600,0,'1 Year'),(887,'EAB1438D132E74F3',31557600,0,'1 Year'),(888,'A9C54203C43DC7B9',31557600,0,'1 Year'),(889,'BC2A4EB4EBF79E15',31557600,0,'1 Year'),(890,'B53D2F1CF0672BE2',31557600,0,'1 Year'),(891,'F28B27BA2831A354',31557600,0,'1 Year'),(892,'2C6493C394EE828A',31557600,0,'1 Year'),(893,'F31E4DB30988B679',31557600,0,'1 Year'),(894,'46C0516C8B70EEDA',31557600,0,'1 Year'),(895,'C15EF4D26D86A659',31557600,0,'1 Year'),(896,'AC7100BDE46E553D',31557600,0,'1 Year'),(897,'F7E02B9771DD6FAA',31557600,0,'1 Year'),(898,'1FAAADA591BDE718',31557600,0,'1 Year'),(899,'5A41D637CF07ED04',31557600,0,'1 Year'),(900,'F2C6380F3C6B69EE',31557600,0,'1 Year'),(901,'7F491A18840C7F0C',94672800,0,'3 Year'),(902,'EC148E10AE9F0206',94672800,0,'3 Year'),(903,'2AAF142FB0191138',94672800,0,'3 Year'),(904,'3E6376CC1DC9AC45',94672800,0,'3 Year'),(905,'A2FBE15ABB6FF384',94672800,0,'3 Year'),(906,'4325A539B6A263A0',94672800,0,'3 Year'),(907,'61723774C8FE1E7C',94672800,0,'3 Year'),(908,'57904DC98FB4C86E',94672800,0,'3 Year'),(909,'A0852773DD2EAC1B',94672800,0,'3 Year'),(910,'E256347DD43A8AE8',94672800,0,'3 Year'),(911,'6E5D639FB7F8538C',94672800,0,'3 Year'),(912,'BE5E1B42CCC0D5EC',94672800,0,'3 Year'),(913,'3B4AF39BDD5B2BAE',94672800,0,'3 Year'),(914,'D1B6E5A4845D2AE5',94672800,0,'3 Year'),(915,'DD4609D083082286',94672800,0,'3 Year'),(916,'71A2EAAB33BC5DE2',94672800,0,'3 Year'),(917,'E5D0B18575713E89',94672800,0,'3 Year'),(918,'DA38642D09A44F52',94672800,0,'3 Year'),(919,'EB8A4990971D96CD',94672800,0,'3 Year'),(920,'1C9D77F3DBA46431',94672800,0,'3 Year'),(921,'5EEEEA7C82ADEF7C',94672800,0,'3 Year'),(922,'02A45BBEBD306F71',94672800,0,'3 Year'),(923,'55E5B084EE1428FA',94672800,0,'3 Year'),(924,'D0A17C2EE40316E8',94672800,0,'3 Year'),(925,'B559D5DFF507B0E6',94672800,0,'3 Year'),(926,'B0BF9290939CA9C7',94672800,0,'3 Year'),(927,'7A54E74A8BEE2566',94672800,0,'3 Year'),(928,'2F52D775B898FBF6',94672800,0,'3 Year'),(929,'72AC34561E0503BE',94672800,0,'3 Year'),(930,'8E881418A6BF0C17',94672800,0,'3 Year'),(931,'AFE7F5A84AAD5B79',94672800,0,'3 Year'),(932,'E5B7576ACCB144A4',94672800,0,'3 Year'),(933,'FFAB5836CBC98705',94672800,0,'3 Year'),(934,'D58ED35B66E4FA78',94672800,0,'3 Year'),(935,'D17CDB3C7339FD4F',94672800,0,'3 Year'),(936,'E7BB0DB45628A8B7',94672800,0,'3 Year'),(937,'D2A93C60A4A64508',94672800,0,'3 Year'),(938,'B8C347E7688F8C26',94672800,0,'3 Year'),(939,'FB68B53678C44DAA',94672800,0,'3 Year'),(940,'19ED3507932F11AE',94672800,0,'3 Year'),(941,'816443EE49CFB432',94672800,0,'3 Year'),(942,'2558DE6227D1B7CA',94672800,0,'3 Year'),(943,'F915B3DCF966DC26',94672800,0,'3 Year'),(944,'CD38073CD638DCAD',94672800,0,'3 Year'),(945,'CD904AE3F62C6B52',94672800,0,'3 Year'),(946,'44A750F876E6592C',94672800,0,'3 Year'),(947,'E43DEEA2E0564944',94672800,0,'3 Year'),(948,'E21C2F084BEAE700',94672800,0,'3 Year'),(949,'AD72163088D7BE1E',94672800,0,'3 Year'),(950,'E6070EF6404FD409',94672800,0,'3 Year'),(951,'307D61A7BDFE08D5',94672800,0,'3 Year'),(952,'D6A82D2603D13933',94672800,0,'3 Year'),(953,'FCF4EB0C380EC4B4',94672800,0,'3 Year'),(954,'A33E3370B27F60AB',94672800,0,'3 Year'),(955,'FA0DC9FE29AD97DB',94672800,0,'3 Year'),(956,'C1541C71FB5BC3FA',94672800,0,'3 Year'),(957,'2348205547981A9B',94672800,0,'3 Year'),(958,'89B1336E8555BDFA',94672800,0,'3 Year'),(959,'2E94E946E548A370',94672800,0,'3 Year'),(960,'DBEB314F38486586',94672800,0,'3 Year'),(961,'66DF6E3528B0C5E3',94672800,0,'3 Year'),(962,'9A17D12A88298593',94672800,0,'3 Year'),(963,'69E13A0BE5F0A966',94672800,0,'3 Year'),(964,'3B3152FA5A1A0710',94672800,0,'3 Year'),(965,'B80ECB66585A3DCC',94672800,0,'3 Year'),(966,'028EBEC1C2D09848',94672800,0,'3 Year'),(967,'6587CAA212BB2AEC',94672800,0,'3 Year'),(968,'2D375237255F4B6E',94672800,0,'3 Year'),(969,'CB0F43AA1CAF1805',94672800,0,'3 Year'),(970,'A1CA027C6D4BE461',94672800,0,'3 Year'),(971,'50DE063C20D0755A',94672800,0,'3 Year'),(972,'04A8FBE9533880C3',94672800,0,'3 Year'),(973,'D1414FC0F29518C2',94672800,0,'3 Year'),(974,'A5077A5B9EF3D8BC',94672800,0,'3 Year'),(975,'7EA3A0E73913FC36',94672800,0,'3 Year'),(976,'F28EDCA86BFF43C6',94672800,0,'3 Year'),(977,'2EC64A8D1BB46DB1',94672800,0,'3 Year'),(978,'F38B323A522C3AB5',94672800,0,'3 Year'),(979,'E591F8A04F5D7E0D',94672800,0,'3 Year'),(980,'BECBD97EA7DEE359',94672800,0,'3 Year'),(981,'A0A5EA85E38138BC',94672800,0,'3 Year'),(982,'92ECAD8E3569695C',94672800,0,'3 Year'),(983,'46443DCAA5DF330D',94672800,0,'3 Year'),(984,'CA4971E9A1E52768',94672800,0,'3 Year'),(985,'263C494BAEA67AB4',94672800,0,'3 Year'),(986,'C777652CB70BE3E8',94672800,0,'3 Year'),(987,'8BC837558DB45E9B',94672800,0,'3 Year'),(988,'A546D2A6CF7690CE',94672800,0,'3 Year'),(989,'ACBBD4D43FF9B23D',94672800,0,'3 Year'),(990,'E6B2A665A1AFB9C5',94672800,0,'3 Year'),(991,'D0ACD0D09699598C',94672800,0,'3 Year'),(992,'893944D2FC4B161A',94672800,0,'3 Year'),(993,'925E27CECE077957',94672800,0,'3 Year'),(994,'3B06C14C602A75CD',94672800,0,'3 Year'),(995,'88E7761DB448F55C',94672800,0,'3 Year'),(996,'197B9DA6316AE842',94672800,0,'3 Year'),(997,'EE56C37EB5683EB0',94672800,0,'3 Year'),(998,'C6C3EE6200C39F9F',94672800,0,'3 Year'),(999,'2BC302F03E064070',94672800,0,'3 Year'),(1000,'AF7FC75952E71EC6',94672800,0,'3 Year');
+/*!40000 ALTER TABLE `licence` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orderaddress`
+--
+
+DROP TABLE IF EXISTS `orderaddress`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orderaddress` (
+  `order_address_id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `address_id` int NOT NULL,
+  PRIMARY KEY (`order_address_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orderaddress`
+--
+
+LOCK TABLES `orderaddress` WRITE;
+/*!40000 ALTER TABLE `orderaddress` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderaddress` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orderdiscount`
+--
+
+DROP TABLE IF EXISTS `orderdiscount`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orderdiscount` (
+  `order_discount_id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `promo_id` int NOT NULL,
+  `discount_amount` float NOT NULL,
+  PRIMARY KEY (`order_discount_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orderdiscount`
+--
+
+LOCK TABLES `orderdiscount` WRITE;
+/*!40000 ALTER TABLE `orderdiscount` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderdiscount` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orderlog`
+--
+
+DROP TABLE IF EXISTS `orderlog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orderlog` (
+  `order_log_id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `new_status_id` int NOT NULL,
+  `date_time` varchar(20) NOT NULL,
+  PRIMARY KEY (`order_log_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orderlog`
+--
+
+LOCK TABLES `orderlog` WRITE;
+/*!40000 ALTER TABLE `orderlog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderlog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `order_id` int NOT NULL AUTO_INCREMENT,
+  `prefix` varchar(6) NOT NULL,
+  `order_status_id` int NOT NULL DEFAULT '0',
+  `handle_by_id` int NOT NULL DEFAULT '0',
+  `client_id` int NOT NULL DEFAULT '0',
+  `client_type` varchar(1) NOT NULL,
+  `branch_id` int NOT NULL,
+  `table_point_id` int NOT NULL DEFAULT '0',
+  `start_time` varchar(20) NOT NULL,
+  `complete_time` varchar(20) DEFAULT NULL,
+  `service_charge` float NOT NULL DEFAULT '0',
+  `vat` float NOT NULL DEFAULT '0',
+  `delivery_charge` float NOT NULL DEFAULT '0',
+  `note` text,
+  `visibility` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orderstatus`
+--
+
+DROP TABLE IF EXISTS `orderstatus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orderstatus` (
+  `order_status_id` int NOT NULL AUTO_INCREMENT,
+  `order_status_name` varchar(25) NOT NULL,
+  `changeability` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`order_status_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orderstatus`
+--
+
+LOCK TABLES `orderstatus` WRITE;
+/*!40000 ALTER TABLE `orderstatus` DISABLE KEYS */;
+INSERT INTO `orderstatus` VALUES (1,'Submitted',0),(2,'Accepted',1),(3,'Processing',0),(4,'Delivering',1),(5,'Awaiting Payment',1),(6,'Completed',0),(7,'Canceled',0);
+/*!40000 ALTER TABLE `orderstatus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `payment`
+--
+
+DROP TABLE IF EXISTS `payment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `payment` (
+  `payment_id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `payment_method_id` int NOT NULL,
+  `transaction_id` varchar(50) DEFAULT 'N/A',
+  `number` varchar(20) NOT NULL,
+  `amount` float NOT NULL,
+  `date_time` varchar(20) NOT NULL,
+  PRIMARY KEY (`payment_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `payment`
+--
+
+LOCK TABLES `payment` WRITE;
+/*!40000 ALTER TABLE `payment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `payment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `paymentmethod`
+--
+
+DROP TABLE IF EXISTS `paymentmethod`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `paymentmethod` (
+  `payment_method_id` int NOT NULL AUTO_INCREMENT,
+  `payment_method` varchar(20) NOT NULL,
+  `changeability` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`payment_method_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `paymentmethod`
+--
+
+LOCK TABLES `paymentmethod` WRITE;
+/*!40000 ALTER TABLE `paymentmethod` DISABLE KEYS */;
+INSERT INTO `paymentmethod` VALUES (1,'Cash',0),(2,'Cash On Delivery',0),(3,'Card Payment',0),(4,'bKash',0),(5,'Rocket',0);
+/*!40000 ALTER TABLE `paymentmethod` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `postoffice`
+--
+
+DROP TABLE IF EXISTS `postoffice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `postoffice` (
+  `post_office_id` int NOT NULL AUTO_INCREMENT,
+  `post_office_name` varchar(30) NOT NULL,
+  `post_code` int NOT NULL,
+  `branch_id` int NOT NULL,
+  PRIMARY KEY (`post_office_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `postoffice`
+--
+
+LOCK TABLES `postoffice` WRITE;
+/*!40000 ALTER TABLE `postoffice` DISABLE KEYS */;
+INSERT INTO `postoffice` VALUES (1,'Bashaboo',1214,4),(2,'Khilgaon',1219,10),(3,'Rampura',1220,2),(4,'Badda',1222,2);
+/*!40000 ALTER TABLE `postoffice` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `product` (
+  `productID` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `size` varchar(20) DEFAULT NULL,
+  `product_company` varchar(200) DEFAULT NULL,
+  `product_version` varchar(100) DEFAULT NULL,
+  `product_country` varchar(100) DEFAULT NULL,
+  `barcode` varchar(20) NOT NULL,
+  `categoryID` int NOT NULL,
+  `for_sale` int NOT NULL,
+  `enable_vat` int NOT NULL,
+  `enable_notification` int NOT NULL DEFAULT '1',
+  `threshold_quantity` float NOT NULL DEFAULT '0',
+  `selling_price` float NOT NULL,
+  `promotional_off` float NOT NULL,
+  `image` varchar(100) DEFAULT NULL,
+  `description` text,
+  PRIMARY KEY (`productID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_category`
+--
+
+DROP TABLE IF EXISTS `product_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `product_category` (
+  `product_category_id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int NOT NULL,
+  `category_ids` text NOT NULL,
+  PRIMARY KEY (`product_category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_category`
+--
+
+LOCK TABLES `product_category` WRITE;
+/*!40000 ALTER TABLE `product_category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `productreturn`
+--
+
+DROP TABLE IF EXISTS `productreturn`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `productreturn` (
+  `return_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `order_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `quantity` int NOT NULL,
+  `unit_price` float NOT NULL,
+  `date_time` varchar(20) NOT NULL,
+  PRIMARY KEY (`return_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `productreturn`
+--
+
+LOCK TABLES `productreturn` WRITE;
+/*!40000 ALTER TABLE `productreturn` DISABLE KEYS */;
+/*!40000 ALTER TABLE `productreturn` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `promo`
+--
+
+DROP TABLE IF EXISTS `promo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `promo` (
+  `promo_id` int NOT NULL AUTO_INCREMENT,
+  `promo_code` varchar(20) NOT NULL,
+  `percent` int NOT NULL,
+  `max_amount` int NOT NULL,
+  `valid_till` varchar(10) DEFAULT NULL,
+  `note` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`promo_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `promo`
+--
+
+LOCK TABLES `promo` WRITE;
+/*!40000 ALTER TABLE `promo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `promo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rank`
+--
+
+DROP TABLE IF EXISTS `rank`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `rank` (
+  `rankID` int NOT NULL AUTO_INCREMENT,
+  `rank_name` varchar(30) NOT NULL,
+  PRIMARY KEY (`rankID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rank`
+--
+
+LOCK TABLES `rank` WRITE;
+/*!40000 ALTER TABLE `rank` DISABLE KEYS */;
+INSERT INTO `rank` VALUES (1,'Project Manager'),(3,'Software Engineer'),(4,'General Manager');
+/*!40000 ALTER TABLE `rank` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `refundlog`
+--
+
+DROP TABLE IF EXISTS `refundlog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `refundlog` (
+  `refund_log_id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `refunded_by` int NOT NULL,
+  `refund_amount` float NOT NULL,
+  `date_time` varchar(20) NOT NULL,
+  `remark` text NOT NULL,
+  PRIMARY KEY (`refund_log_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `refundlog`
+--
+
+LOCK TABLES `refundlog` WRITE;
+/*!40000 ALTER TABLE `refundlog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `refundlog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `religion`
+--
+
+DROP TABLE IF EXISTS `religion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `religion` (
+  `religionID` int NOT NULL AUTO_INCREMENT,
+  `religion_name` varchar(10) NOT NULL,
+  PRIMARY KEY (`religionID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `religion`
+--
+
+LOCK TABLES `religion` WRITE;
+/*!40000 ALTER TABLE `religion` DISABLE KEYS */;
+INSERT INTO `religion` VALUES (1,'Islam'),(2,'Hindu'),(3,'Buddha'),(4,'Christians');
+/*!40000 ALTER TABLE `religion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `role` (
+  `role_id` int NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(50) NOT NULL,
+  `role_description` text NOT NULL,
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,'CATEGORY VIEW',''),(2,'CATEGORY ADD',''),(3,'CATEGORY EDIT',''),(4,'CATEGORY DELETE',''),(5,'SUB-CATEGORY VIEW',''),(6,'SUB-CATEGORY ADD',''),(7,'SUB-CATEGORY EDIT',''),(8,'SUB-CATEGORY DELETE',''),(9,'PRODUCT VIEW',''),(10,'PRODUCT ADD',''),(11,'PRODUCT EDIT',''),(12,'PRODUCT DELETE',''),(13,'STOCK VIEW',''),(14,'STOCK LOG VIEW',''),(15,'STOCK TRANSFER',''),(16,'STOCK EDIT',''),(17,'STOCK OUT',''),(18,'STOCK DELETE',''),(19,'STOCK NOTIFICATION VIEW',''),(20,'STOCK NOTIFICATION DISMISS',''),(21,'ORDER VIEW ARCHIVED',''),(22,'ORDER VIEW JOB CART',''),(23,'ORDER VIEW SR',''),(24,'ORDER VIEW POS',''),(25,'ORDER VIEW OND',''),(26,'ORDER CREATE - JOB CART',''),(27,'ORDER CREATE - SR',''),(28,'ORDER CREATE - POS',''),(29,'ORDER EDIT - JOB CART',''),(30,'ORDER EDIT - SR',''),(31,'ORDER EDIT - POS',''),(32,'ORDER EDIT - OND',''),(33,'ORDER DELETE - JOB CART',''),(34,'ORDER DELETE - SR',''),(35,'ORDER DELETE - POS',''),(36,'ORDER DELETE - OND',''),(37,'ORDER PAYMENT DELETE',''),(38,'REPORT VIEW',''),(39,'RETURN PRODUCT',''),(40,'EMPLOYEE & CUSTOMER LIST VIEW',''),(41,'EMPLOYEE DETAIL VIEW',''),(42,'EMPLOYEE CREATE',''),(43,'EMPLOYEE EDIT',''),(44,'EMPLOYEE DELETE',''),(46,'CUSTOMER CREATE',''),(47,'CUSTOMER EDIT',''),(48,'CUSTOMER DELETE',''),(49,'DEPARTMENT & RANK VIEW',''),(50,'DEPARTMENT CREATE',''),(51,'DEPARTMENT EDIT',''),(52,'DEPARTMENT DELETE',''),(53,'RANK CREATE',''),(54,'RANK EDIT',''),(55,'RANK DELETE',''),(56,'BRANCH VIEW',''),(57,'BRANCH CREATE',''),(58,'BRANCH EDIT',''),(59,'BRANCH DELETE',''),(60,'VOUCHER VIEW',''),(61,'VOUCHER CREATE',''),(62,'VOUCHER EDIT',''),(63,'VOUCHER DELETE',''),(64,'SERVICE POINT VIEW',''),(65,'SERVICE POINT CREATE',''),(66,'SERVICE POINT EDIT',''),(67,'SERVICE POINT DELETE',''),(68,'DELIVERY COVERAGE VIEW',''),(69,'DELIVERY COVERAGE CREATE',''),(70,'DELIVERY COVERAGE DELETE',''),(71,'PROMO CODE VIEW',''),(72,'PROMO CODE CREATE',''),(73,'PROMO CODE DELETE',''),(74,'JOB & CHECKLIST VIEW',''),(75,'JOB TASK CREATE',''),(76,'JOB TASK EDIT',''),(77,'JOB TASK DELETE',''),(78,'JOB CHECKLIST CREATE',''),(79,'JOB CHECKLIST EDIT',''),(80,'JOB CHECKLIST DELETE',''),(81,'COMPANY & BILLING CONFIGURATION EDIT',''),(82,'ROLE VIEW',''),(83,'ROLE CREATE',''),(84,'ROLE EDIT',''),(85,'ROLE DELETE',''),(86,'CASH BOX',''),(87,'VENDOR VIEW',''),(88,'VENDOR CREATE',''),(89,'VENDOR EDIT',''),(90,'VENDOR DELETE',''),(91,'ORDER VIEW ARCHIVED','');
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role_group`
+--
+
+DROP TABLE IF EXISTS `role_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `role_group` (
+  `role_group_id` int NOT NULL AUTO_INCREMENT,
+  `role_group_name` varchar(30) NOT NULL,
+  `role_group_description` text NOT NULL,
+  PRIMARY KEY (`role_group_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role_group`
+--
+
+LOCK TABLES `role_group` WRITE;
+/*!40000 ALTER TABLE `role_group` DISABLE KEYS */;
+INSERT INTO `role_group` VALUES (1,'MASTER','1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91');
+/*!40000 ALTER TABLE `role_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `salarytype`
+--
+
+DROP TABLE IF EXISTS `salarytype`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `salarytype` (
+  `salary_type_id` int NOT NULL AUTO_INCREMENT,
+  `salary_type` varchar(11) NOT NULL,
+  PRIMARY KEY (`salary_type_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `salarytype`
+--
+
+LOCK TABLES `salarytype` WRITE;
+/*!40000 ALTER TABLE `salarytype` DISABLE KEYS */;
+INSERT INTO `salarytype` VALUES (1,'Monthly'),(2,'Hourly');
+/*!40000 ALTER TABLE `salarytype` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stock`
+--
+
+DROP TABLE IF EXISTS `stock`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `stock` (
+  `stock_id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int NOT NULL,
+  `mgf_date` varchar(10) NOT NULL,
+  `exp_date` varchar(10) NOT NULL,
+  `branch_id` int NOT NULL,
+  `quantity` float NOT NULL,
+  `unit` int NOT NULL,
+  `buying_price` float NOT NULL,
+  `container_tracking_id` varchar(50) DEFAULT NULL,
+  `quantity_per_container` int DEFAULT NULL,
+  `vendor_id` int DEFAULT NULL,
+  `remark` text,
+  `stock_in_date` varchar(10) DEFAULT NULL,
+  `visibility` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`stock_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stock`
+--
+
+LOCK TABLES `stock` WRITE;
+/*!40000 ALTER TABLE `stock` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stock` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stocklimitnotification`
+--
+
+DROP TABLE IF EXISTS `stocklimitnotification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `stocklimitnotification` (
+  `notification_id` int NOT NULL AUTO_INCREMENT,
+  `stock_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `branch_id` int NOT NULL,
+  `product_name` varchar(100) NOT NULL,
+  `cause` varchar(11) NOT NULL,
+  `resolved` int NOT NULL,
+  PRIMARY KEY (`notification_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stocklimitnotification`
+--
+
+LOCK TABLES `stocklimitnotification` WRITE;
+/*!40000 ALTER TABLE `stocklimitnotification` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stocklimitnotification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stocklog`
+--
+
+DROP TABLE IF EXISTS `stocklog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `stocklog` (
+  `stock_log_id` int NOT NULL AUTO_INCREMENT,
+  `stock_id` int NOT NULL,
+  `operation` varchar(10) NOT NULL,
+  `user_id` int NOT NULL,
+  `date_time` varchar(20) NOT NULL,
+  `out_quantity` float NOT NULL,
+  `stock_out_reason` int NOT NULL,
+  `remark` text,
+  PRIMARY KEY (`stock_log_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stocklog`
+--
+
+LOCK TABLES `stocklog` WRITE;
+/*!40000 ALTER TABLE `stocklog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `stocklog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `systouch`
+--
+
+DROP TABLE IF EXISTS `systouch`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `systouch` (
+  `systouch_id` int NOT NULL AUTO_INCREMENT,
+  `company_first_name` varchar(30) DEFAULT NULL,
+  `company_last_name` varchar(30) DEFAULT NULL,
+  `logo` varchar(100) DEFAULT NULL,
+  `validity` int NOT NULL,
+  `service_charge_rate` float NOT NULL,
+  `vat_rate` float NOT NULL,
+  `vat_on_servce_charge` int NOT NULL DEFAULT '0',
+  `service_charge_on_vat` int NOT NULL,
+  `enable_rounding` int NOT NULL,
+  `discount_on_service_charge` int NOT NULL,
+  `online_delivery_charge` float NOT NULL,
+  PRIMARY KEY (`systouch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `systouch`
+--
+
+LOCK TABLES `systouch` WRITE;
+/*!40000 ALTER TABLE `systouch` DISABLE KEYS */;
+INSERT INTO `systouch` VALUES (1,'Code','Node','upload/602e8d32d05b83.54970937.jpg',1621583490,10,10,0,1,1,1,65);
+/*!40000 ALTER TABLE `systouch` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tablepoint`
+--
+
+DROP TABLE IF EXISTS `tablepoint`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tablepoint` (
+  `table_id` int NOT NULL AUTO_INCREMENT,
+  `branch_id` int NOT NULL,
+  `table_name` varchar(30) NOT NULL,
+  PRIMARY KEY (`table_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tablepoint`
+--
+
+LOCK TABLES `tablepoint` WRITE;
+/*!40000 ALTER TABLE `tablepoint` DISABLE KEYS */;
+INSERT INTO `tablepoint` VALUES (1,1,'Table 1.1'),(2,2,'Table 2.1'),(3,2,'Table 2.2'),(4,3,'Table 3.1');
+/*!40000 ALTER TABLE `tablepoint` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `underquantity`
+--
+
+DROP TABLE IF EXISTS `underquantity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `underquantity` (
+  `under_quantity_id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int NOT NULL,
+  `branch_id` int NOT NULL,
+  `under_quantity` float NOT NULL,
+  PRIMARY KEY (`under_quantity_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `underquantity`
+--
+
+LOCK TABLES `underquantity` WRITE;
+/*!40000 ALTER TABLE `underquantity` DISABLE KEYS */;
+/*!40000 ALTER TABLE `underquantity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `unit`
+--
+
+DROP TABLE IF EXISTS `unit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `unit` (
+  `unitID` int NOT NULL AUTO_INCREMENT,
+  `val1` float NOT NULL,
+  `unit1` varchar(20) NOT NULL,
+  `val2` float NOT NULL,
+  `unit2` varchar(20) NOT NULL,
+  PRIMARY KEY (`unitID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `unit`
+--
+
+LOCK TABLES `unit` WRITE;
+/*!40000 ALTER TABLE `unit` DISABLE KEYS */;
+INSERT INTO `unit` VALUES (1,1,'PS',1,'PS'),(2,1,'Pair',2,'PS'),(3,1,'Hali',4,'PS'),(4,1,'Half Dozen',6,'PS'),(5,1,'Dozen',12,'PS'),(6,1,'Kuri',20,'PS'),(7,1,'Mound',40,'PS'),(8,1,'Reams',500,'PS');
+/*!40000 ALTER TABLE `unit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `userID` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `password` text NOT NULL,
+  `image` varchar(100) DEFAULT NULL,
+  `credit` int NOT NULL DEFAULT '0',
+  `religionID` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Mir Arif Hasan','a@gmail.com','012345678910','f16JXf59cyKzuOCK+GVoxA==','upload/avatar.png',0,1),(40,'ABC','abc@gmail.com','123456789','f16JXf59cyKzuOCK+GVoxA==',NULL,0,0);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vendor`
+--
+
+DROP TABLE IF EXISTS `vendor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `vendor` (
+  `vendor_id` int NOT NULL AUTO_INCREMENT,
+  `vendor_name` varchar(70) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `address_id` int NOT NULL,
+  `credit` int NOT NULL,
+  PRIMARY KEY (`vendor_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vendor`
+--
+
+LOCK TABLES `vendor` WRITE;
+/*!40000 ALTER TABLE `vendor` DISABLE KEYS */;
+INSERT INTO `vendor` VALUES (1,'Div Players','01996846517','abcdd@gmail.com',1,0),(2,'Kamal Foods','+8801123456789','xyz@gmail.com',2,0);
+/*!40000 ALTER TABLE `vendor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `voucher`
+--
+
+DROP TABLE IF EXISTS `voucher`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `voucher` (
+  `voucher_id` int NOT NULL AUTO_INCREMENT,
+  `voucher_code` varchar(50) NOT NULL,
+  `amount` int NOT NULL,
+  `is_active` int NOT NULL,
+  `is_used` int NOT NULL,
+  `validity` varchar(10) NOT NULL,
+  `remarks` text NOT NULL,
+  PRIMARY KEY (`voucher_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `voucher`
+--
+
+LOCK TABLES `voucher` WRITE;
+/*!40000 ALTER TABLE `voucher` DISABLE KEYS */;
+/*!40000 ALTER TABLE `voucher` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-03-10  0:10:00
