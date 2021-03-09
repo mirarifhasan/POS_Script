@@ -1,0 +1,68 @@
+version: '3.7'
+
+services:
+  database:
+    image: mysql
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: codenode_pos
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - 7701:3306
+    volumes:
+     - dockerAngularSpringDatabaseData:/var/lib/mysql
+    networks:
+     - backendNetwork
+
+  # posscript:
+  #   image: mirarifhasan/pos-script:v1
+  #   container_name: posscript
+  #   ports:
+  #     - 80:80
+  #   volumes:
+  #     - posScriptData:/var/www/html/
+  #   networks:
+  #     - frontendNetwork
+
+  springapi:
+    # image: openjdk:14-jdk-alpine
+    image: pos-be:v11
+    container_name: springapi
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/codenode_pos
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    #   - posscript
+    # volumes:
+    #   - ./Spring/target/spring-0.0.1-SNAPSHOT.jar:/application.jar
+    # command: ["java", "-jar", "application.jar"]
+    networks:
+      - backendNetwork
+      # - frontendNetwork
+      
+  # angular:
+  #   image: pos-fe:v3
+  #   # build: .
+  #   container_name: angular
+  #   ports: 
+  #     - 4200:4200
+  #   depends_on:
+  #     - springapi
+  #     # - posscript
+  #   environment: 
+  #     - HOST=0.0.0.0
+  #   networks:
+  #     - frontendNetwork
+    
+
+volumes:
+  dockerAngularSpringDatabaseData:
+  # posScriptData:
+  
+networks:
+  backendNetwork:
+  # frontendNetwork:
